@@ -40,9 +40,13 @@
             panel3 = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             gameButton = new Button();
+            panel4 = new Panel();
+            flowLayoutPanelWorkers = new FlowLayoutPanel();
+            btnHasiLanaldia = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanelBotoiak
@@ -143,11 +147,40 @@
             gameButton.Text = "Bideojokoa";
             gameButton.UseVisualStyleBackColor = false;
             // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.ControlLight;
+            panel4.Controls.Add(btnHasiLanaldia);
+            panel4.Controls.Add(flowLayoutPanelWorkers);
+            panel4.Location = new Point(1366, 233);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(175, 570);
+            panel4.TabIndex = 9;
+            // 
+            // flowLayoutPanelWorkers
+            // 
+            flowLayoutPanelWorkers.BackColor = SystemColors.ButtonHighlight;
+            flowLayoutPanelWorkers.Location = new Point(23, 23);
+            flowLayoutPanelWorkers.Name = "flowLayoutPanelWorkers";
+            flowLayoutPanelWorkers.Size = new Size(130, 456);
+            flowLayoutPanelWorkers.TabIndex = 0;
+            // 
+            // btnHasiLanaldia
+            // 
+            btnHasiLanaldia.BackColor = SystemColors.MenuHighlight;
+            btnHasiLanaldia.Location = new Point(23, 485);
+            btnHasiLanaldia.Name = "btnHasiLanaldia";
+            btnHasiLanaldia.Size = new Size(130, 56);
+            btnHasiLanaldia.TabIndex = 1;
+            btnHasiLanaldia.Text = "Hasi lanaldia";
+            btnHasiLanaldia.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1553, 875);
+            Controls.Add(panel4);
             Controls.Add(gameButton);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -161,6 +194,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -177,5 +211,8 @@
         private FlowLayoutPanel flowLayoutPanelTasks;
         private FlowLayoutPanel flowLayoutPanel2;
         private Button gameButton;
+        private Panel panel4;
+        private FlowLayoutPanel flowLayoutPanelWorkers;
+        private Button btnHasiLanaldia;
     }
 }
