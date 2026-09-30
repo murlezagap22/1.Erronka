@@ -6,7 +6,7 @@ namespace Erronka
         {
             InitializeComponent();
 
-            string[] bezeroak = { "Jon", "Ane", "HASpnasdn", "Ane", "Mikel", "Iker", "Nerea", "Otro", "YUUUU", "SUUUUU" };
+            string[] bezeroak = { "Jon", "Ane", "HASpnasdn", "Ane", "Mikel", "Iker", "Nerea", "Otro", "YUUUU", "SUUUUU", "asdasdasd" };
 
             string[,] tareas =
             {
