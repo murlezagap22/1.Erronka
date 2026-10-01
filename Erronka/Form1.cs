@@ -8,7 +8,18 @@ namespace Erronka
 
             btnHasiLanaldia.Visible = false;
 
-            string[] bezeroak = { "Jon", "Ane", "HASpnasdn", "Ane", "Mikel", "Iker", "Nerea", "Otro", "YUUUU", "SUUUUU", "asdasdasd" };
+            string[,] bezeroak =
+            {
+                { "1", "Jon" },
+                { "2", "Ane" },
+                { "3", "Mikel" },
+                { "4", "Iker" },
+                { "5", "Nerea" },
+                { "6", "Otro" },
+                { "7", "YUUUU" },
+                { "8", "SUUUUU" },
+                { "9", "asdasdasd" }
+            };
 
             string[,] tareas =
             {
@@ -37,16 +48,17 @@ namespace Erronka
             int botonesPorFila = 9;
             int anchoBoton = flowLayoutPanelBotoiak.ClientSize.Width / botonesPorFila;
 
-            foreach (string bezeroa in bezeroak)
+            for (int i = 0; i < bezeroak.GetLength(0); i++)
             {
                 Panel panel = new Panel();
                 panel.Width = 170;
                 panel.Height = 60;
 
                 Button botoia = new Button();
-                botoia.Text = bezeroa;
+                botoia.Text = bezeroak[i,1];
                 botoia.Width = 120;
                 botoia.Height = 60;
+                botoia.Tag = bezeroak[i, 0];
                 botoia.Click += BezeroaKlikatu;
                 botoia.Location = new Point(0, 0);
 
@@ -161,8 +173,11 @@ namespace Erronka
         {
             Button botoia = (Button)sender;
 
-            botoia.Text = botoia.Text + " / Click";
-            botoia.BackColor = Color.LightGreen;
+            string id = (string)botoia.Tag;
+            string nombre = botoia.Text;
+
+            Form2 formulario = new Form2(id, nombre);
+            formulario.Show();
         }
 
         private void BezeroaAldatu(object sender, EventArgs e)

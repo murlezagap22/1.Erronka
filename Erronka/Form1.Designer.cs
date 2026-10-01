@@ -41,8 +41,8 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             gameButton = new Button();
             panel4 = new Panel();
-            flowLayoutPanelWorkers = new FlowLayoutPanel();
             btnHasiLanaldia = new Button();
+            flowLayoutPanelWorkers = new FlowLayoutPanel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -80,6 +80,8 @@
             // textBoxMensaje
             // 
             textBoxMensaje.AccessibleRole = AccessibleRole.TitleBar;
+            textBoxMensaje.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxMensaje.ForeColor = Color.Yellow;
             textBoxMensaje.Location = new Point(12, 12);
             textBoxMensaje.Multiline = true;
             textBoxMensaje.Name = "textBoxMensaje";
@@ -157,14 +159,6 @@
             panel4.Size = new Size(175, 570);
             panel4.TabIndex = 9;
             // 
-            // flowLayoutPanelWorkers
-            // 
-            flowLayoutPanelWorkers.BackColor = SystemColors.ButtonHighlight;
-            flowLayoutPanelWorkers.Location = new Point(23, 23);
-            flowLayoutPanelWorkers.Name = "flowLayoutPanelWorkers";
-            flowLayoutPanelWorkers.Size = new Size(130, 456);
-            flowLayoutPanelWorkers.TabIndex = 0;
-            // 
             // btnHasiLanaldia
             // 
             btnHasiLanaldia.BackColor = SystemColors.MenuHighlight;
@@ -174,6 +168,14 @@
             btnHasiLanaldia.TabIndex = 1;
             btnHasiLanaldia.Text = "Hasi lanaldia";
             btnHasiLanaldia.UseVisualStyleBackColor = false;
+            // 
+            // flowLayoutPanelWorkers
+            // 
+            flowLayoutPanelWorkers.BackColor = SystemColors.ButtonHighlight;
+            flowLayoutPanelWorkers.Location = new Point(23, 23);
+            flowLayoutPanelWorkers.Name = "flowLayoutPanelWorkers";
+            flowLayoutPanelWorkers.Size = new Size(130, 456);
+            flowLayoutPanelWorkers.TabIndex = 0;
             // 
             // Form1
             // 
