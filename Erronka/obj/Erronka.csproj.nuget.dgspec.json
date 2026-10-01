@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj": {}
+    "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj": {
+    "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj",
+        "projectUniqueName": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
         "projectName": "Erronka",
-        "projectPath": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj",
+        "projectPath": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
         "packagesPath": "C:\\Users\\Ikasle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\obj\\",
+        "outputPath": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ikasle\\AppData\\Roaming\\NuGet\\NuGet.Config",
