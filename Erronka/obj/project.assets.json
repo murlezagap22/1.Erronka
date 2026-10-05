@@ -8,19 +8,19 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\Ikasle\\.nuget\\packages\\": {}
+    "C:\\Users\\Urlez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj",
+      "projectUniqueName": "C:\\Users\\Urlez\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
       "projectName": "Erronka",
-      "projectPath": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\Erronka.csproj",
-      "packagesPath": "C:\\Users\\Ikasle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ikasle\\Desktop\\C\\1.Erronka\\Erronka\\obj\\",
+      "projectPath": "C:\\Users\\Urlez\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
+      "packagesPath": "C:\\Users\\Urlez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Urlez\\Documents\\GitHub\\1.Erronka\\Erronka\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ikasle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Urlez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

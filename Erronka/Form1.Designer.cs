@@ -67,6 +67,7 @@
             AddClient.TabIndex = 1;
             AddClient.Text = "+";
             AddClient.UseVisualStyleBackColor = true;
+            AddClient.Click += AddClient_Click;
             // 
             // panel1
             // 

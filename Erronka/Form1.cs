@@ -1,3 +1,5 @@
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Erronka
 {
     public partial class Form1 : Form
@@ -55,7 +57,7 @@ namespace Erronka
                 panel.Height = 60;
 
                 Button botoia = new Button();
-                botoia.Text = bezeroak[i,1];
+                botoia.Text = bezeroak[i, 1];
                 botoia.Width = 120;
                 botoia.Height = 60;
                 botoia.Tag = bezeroak[i, 0];
@@ -173,7 +175,7 @@ namespace Erronka
         {
             Button botoia = (Button)sender;
 
-            string id = (string)botoia.Tag;
+            string id = (string)botoia.Tag ?? null;
             string nombre = botoia.Text;
 
             Form2 formulario = new Form2(id, nombre);
@@ -212,5 +214,10 @@ namespace Erronka
             btnHasiLanaldia.Visible = hayTrabajadorDentro;
         }
 
+        private void AddClient_Click(object sender, EventArgs e)
+        {
+            Form3 formulario = new Form3();
+            formulario.Show();
+        }
     }
 }
