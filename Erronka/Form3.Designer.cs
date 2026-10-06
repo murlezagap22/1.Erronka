@@ -89,12 +89,13 @@
             // 
             denyButton.BackColor = Color.Red;
             denyButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            denyButton.Location = new Point(125, 349);
+            denyButton.Location = new Point(119, 349);
             denyButton.Name = "denyButton";
             denyButton.Size = new Size(139, 58);
             denyButton.TabIndex = 5;
             denyButton.Text = "Ezeztatu";
             denyButton.UseVisualStyleBackColor = false;
+            denyButton.Click += denyButton_Click;
             // 
             // acceptButton
             // 
