@@ -43,9 +43,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(45, 54);
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.Location = new Point(61, 68);
             label1.Name = "label1";
-            label1.Size = new Size(18, 15);
+            label1.Size = new Size(31, 28);
             label1.TabIndex = 0;
             label1.Text = "ID";
             label1.Click += label1_Click;
@@ -63,7 +64,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Denda", "Autokarabana", "Bungalow" });
-            comboBox1.Location = new Point(45, 234);
+            comboBox1.Location = new Point(61, 242);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(384, 23);
             comboBox1.TabIndex = 2;
@@ -71,9 +72,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(45, 206);
+            label3.Font = new Font("Segoe UI", 15F);
+            label3.Location = new Point(61, 211);
             label3.Name = "label3";
-            label3.Size = new Size(122, 15);
+            label3.Size = new Size(202, 28);
             label3.TabIndex = 3;
             label3.Text = "Aukeratu ostatu mota";
             label3.Click += label3_Click;
@@ -102,23 +104,24 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(45, 127);
+            label4.Font = new Font("Segoe UI", 15F);
+            label4.Location = new Point(61, 139);
             label4.Name = "label4";
-            label4.Size = new Size(34, 15);
+            label4.Size = new Size(57, 28);
             label4.TabIndex = 6;
             label4.Text = "Izena";
             label4.Click += label4_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(45, 155);
+            textBox1.Location = new Point(61, 170);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(325, 23);
             textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(45, 81);
+            textBox2.Location = new Point(61, 99);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(325, 23);
             textBox2.TabIndex = 8;
@@ -126,11 +129,13 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(341, 20);
+            label5.Font = new Font("Segoe UI", 25F);
+            label5.Location = new Point(248, 9);
             label5.Name = "label5";
-            label5.Size = new Size(88, 15);
+            label5.Size = new Size(254, 46);
             label5.TabIndex = 9;
             label5.Text = "Bezeroa editatu";
+            label5.Click += label5_Click;
             // 
             // Form4
             // 

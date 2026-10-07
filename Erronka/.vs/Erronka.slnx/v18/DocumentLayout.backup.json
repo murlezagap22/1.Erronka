@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form2.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form2.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\erronka.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:erronka.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|solutionrelative:form4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8A23157A-16F0-952C-9594-588A82635C27}|Erronka.csproj|c:\\users\\ikasle\\documents\\github\\1.erronka\\erronka\\form4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,37 +63,150 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Form3.cs",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.cs",
+              "RelativeDocumentMoniker": "Form3.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.cs",
+              "RelativeToolTip": "Form3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T07:02:35.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form3.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.Designer.cs",
+              "RelativeDocumentMoniker": "Form3.Designer.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.Designer.cs",
+              "RelativeToolTip": "Form3.Designer.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAqwGEAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:44:54.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form2.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.Designer.cs",
+              "RelativeDocumentMoniker": "Form2.Designer.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.Designer.cs",
+              "RelativeToolTip": "Form2.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:46:11.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAAwLsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:44:00.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:43:57.785Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form2.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.cs",
+              "RelativeDocumentMoniker": "Form2.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form2.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:43:53.125Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form2.resx",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.resx",
+              "RelativeDocumentMoniker": "Form2.resx",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form2.resx",
+              "RelativeToolTip": "Form2.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-10-07T06:43:42.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Erronka",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
+              "RelativeDocumentMoniker": "Erronka.csproj",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Erronka.csproj",
+              "RelativeToolTip": "Erronka.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-07T06:42:14.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form3.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.cs",
+              "RelativeDocumentMoniker": "Form3.cs",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form3.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form3.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T06:42:10.386Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Form4.cs",
               "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs",
               "RelativeDocumentMoniker": "Form4.cs",
-              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs*",
-              "RelativeToolTip": "Form4.cs*",
-              "ViewState": "AgIAACMAAAAAAAAAAAD4vzMAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs",
+              "RelativeToolTip": "Form4.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwC8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-06T08:25:31.664Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "Form4.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs",
               "RelativeDocumentMoniker": "Form4.cs",
-              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "Form4.cs [Dise\u00F1o]*",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form4.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-06T08:21:43.63Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "Form4.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.Designer.cs",
               "RelativeDocumentMoniker": "Form4.Designer.cs",
-              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.Designer.cs*",
-              "RelativeToolTip": "Form4.Designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI0AAAABAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Ikasle\\Documents\\GitHub\\1.Erronka\\Erronka\\Form4.Designer.cs",
+              "RelativeToolTip": "Form4.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-06T08:21:39.468Z",
               "EditorCaption": ""

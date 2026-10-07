@@ -68,6 +68,7 @@ namespace Erronka
                 editatuBotoia.Text = "✏️";
                 editatuBotoia.Width = 50;
                 editatuBotoia.Height = 60;
+                editatuBotoia.Tag = bezeroak[i, 0];
                 editatuBotoia.Click += BezeroaAldatu;
                 editatuBotoia.Location = new Point(120, 0);
 
@@ -184,9 +185,13 @@ namespace Erronka
 
         private void BezeroaAldatu(object sender, EventArgs e)
         {
+            MessageBox.Show("Bezeroa aldatu nahi duzu?");
             Button botoia = (Button)sender;
 
             botoia.BackColor = Color.AliceBlue;
+
+            Form4 formulario = new Form4();
+            formulario.Show();
         }
 
         private void AddText_Click(object sender, EventArgs e)
