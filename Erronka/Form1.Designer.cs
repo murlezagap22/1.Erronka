@@ -43,6 +43,8 @@
             panel4 = new Panel();
             btnHasiLanaldia = new Button();
             flowLayoutPanelWorkers = new FlowLayoutPanel();
+            comboBoxBezeroak = new ComboBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -75,7 +77,7 @@
             panel1.Controls.Add(textBoxMensaje);
             panel1.Location = new Point(0, 159);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1423, 74);
+            panel1.Size = new Size(1254, 74);
             panel1.TabIndex = 2;
             // 
             // textBoxMensaje
@@ -86,7 +88,7 @@
             textBoxMensaje.Location = new Point(12, 12);
             textBoxMensaje.Multiline = true;
             textBoxMensaje.Name = "textBoxMensaje";
-            textBoxMensaje.Size = new Size(1391, 50);
+            textBoxMensaje.Size = new Size(1226, 50);
             textBoxMensaje.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -178,11 +180,32 @@
             flowLayoutPanelWorkers.Size = new Size(130, 456);
             flowLayoutPanelWorkers.TabIndex = 0;
             // 
+            // comboBoxBezeroak
+            // 
+            comboBoxBezeroak.FormattingEnabled = true;
+            comboBoxBezeroak.Location = new Point(1266, 198);
+            comboBoxBezeroak.Name = "comboBoxBezeroak";
+            comboBoxBezeroak.Size = new Size(157, 23);
+            comboBoxBezeroak.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(1282, 171);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 23);
+            label1.TabIndex = 11;
+            label1.Text = "Bezeroa Hautatu";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1553, 875);
+            Controls.Add(label1);
+            Controls.Add(comboBoxBezeroak);
             Controls.Add(panel4);
             Controls.Add(gameButton);
             Controls.Add(panel3);
@@ -199,6 +222,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -217,5 +241,7 @@
         private Panel panel4;
         private FlowLayoutPanel flowLayoutPanelWorkers;
         private Button btnHasiLanaldia;
+        private ComboBox comboBoxBezeroak;
+        private Label label1;
     }
 }

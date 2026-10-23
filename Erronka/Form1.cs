@@ -4,42 +4,48 @@ namespace Erronka
 {
     public partial class Form1 : Form
     {
+
+        private string[,] bezeroak =
+        {
+            { "1", "Jon" },
+            { "2", "Ane" },
+            { "3", "Mikel" },
+            { "4", "Iker" },
+            { "5", "Nerea" },
+            { "6", "Otro" },
+            { "7", "YUUUU" },
+            { "8", "SUUUUU" },
+            { "9", "asdasdasd" }
+        };
+
+        // Definitu mezuak arraya 
+        private string[,] mezuak = {};
+
+        private string[,] tareas =
+        {
+            { "Jon", "Revisar instalación eléctrica" },
+            { "Ane", "Cambiar bombilla del almacén" },
+            { "Mikel", "Reparar ordenador" },
+            { "Nerea", "Configurar impresora" },
+            { "Iker", "Revisar conexión a Internet" }
+        };
+
         public Form1()
         {
             InitializeComponent();
 
             btnHasiLanaldia.Visible = false;
 
-            string[,] bezeroak =
-            {
-                { "1", "Jon" },
-                { "2", "Ane" },
-                { "3", "Mikel" },
-                { "4", "Iker" },
-                { "5", "Nerea" },
-                { "6", "Otro" },
-                { "7", "YUUUU" },
-                { "8", "SUUUUU" },
-                { "9", "asdasdasd" }
-            };
 
-            string[,] tareas =
-            {
-                { "Jon", "Revisar instalación eléctrica" },
-                { "Ane", "Cambiar bombilla del almacén" },
-                { "Mikel", "Reparar ordenador" },
-                { "Nerea", "Configurar impresora" },
-                { "Iker", "Revisar conexión a Internet" }
-            };
 
-            string[,] mezuak =
-{
-                { "Jon", "Revisar instalación eléctrica" },
-                { "Ane", "Cambiar bombilla del almacén" },
-                { "Mikel", "Reparar ordenador" },
-                { "Nerea", "Configurar impresora" },
-                { "Iker", "Revisar conexión a Internet" }
-            };
+            //            string[,] mezuak =
+            //{
+            //                { "Jon", "Revisar instalación eléctrica" },
+            //                { "Ane", "Cambiar bombilla del almacén" },
+            //                { "Mikel", "Reparar ordenador" },
+            //                { "Nerea", "Configurar impresora" },
+            //                { "Iker", "Revisar conexión a Internet" }
+            //            };
 
             string[] trabajadores =
             {
@@ -47,6 +53,7 @@ namespace Erronka
                 "Iker"
             };
 
+            // Sortu bezero desberdinak eta hauen botoiak
             int botonesPorFila = 9;
             int anchoBoton = flowLayoutPanelBotoiak.ClientSize.Width / botonesPorFila;
 
@@ -115,30 +122,8 @@ namespace Erronka
                 flowLayoutPanelTasks.Controls.Add(panelTarea);
             }
 
-            for (int i = 0; i < mezuak.GetLength(0); i++)
-            {
-                Panel panelMezuak = new Panel();
-
-                panelMezuak.Width = flowLayoutPanel2.ClientSize.Width - 25;
-                panelMezuak.Height = 75;
-                panelMezuak.BorderStyle = BorderStyle.FixedSingle;
-
-                Label labelTarea = new Label();
-                labelTarea.Text = mezuak[i, 1];
-                labelTarea.Location = new Point(10, 10);
-                labelTarea.AutoSize = true;
-                labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
-
-                Label labelBezeroa = new Label();
-                labelBezeroa.Text = "Bezero: " + mezuak[i, 0];
-                labelBezeroa.Location = new Point(10, 45);
-                labelBezeroa.AutoSize = true;
-
-                panelMezuak.Controls.Add(labelTarea);
-                panelMezuak.Controls.Add(labelBezeroa);
-
-                flowLayoutPanel2.Controls.Add(panelMezuak);
-            }
+            CargarBezeroak();
+            showMezuak();
 
             for (int i = 0; i < trabajadores.GetLength(0); i++)
             {
@@ -194,11 +179,149 @@ namespace Erronka
             formulario.Show();
         }
 
+        // Mezua
         private void AddText_Click(object sender, EventArgs e)
         {
-            string texto = textBoxMensaje.Text;
+            string text = textBoxMensaje.Text.Trim();
 
-            MessageBox.Show(texto);
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                MessageBox.Show("Sartu mezu bat bezeroari bidaltzeko");
+                return;
+            }
+
+            string selectedBezero =
+                comboBoxBezeroak.SelectedItem.ToString();
+
+            // Array berri bat sortu bat gehiagorekin ezin delako array baten edukiera handitu
+            string[,] newMezuak =
+                new string[mezuak.GetLength(0) + 1, 4];
+
+            // Dauden mezuak array berrira kopiatu
+            for (int i = 0; i < mezuak.GetLength(0); i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    newMezuak[i, j] = mezuak[i, j];
+                }
+            }
+
+            // Mezu berria sartu
+            int nuevaFila = newMezuak.GetLength(0) - 1;
+
+            newMezuak[nuevaFila, 0] = selectedBezero;
+            newMezuak[nuevaFila, 1] = text;
+            newMezuak[nuevaFila, 2] = "0"; // Irakurrita dagoen jakiteko aldagaia
+            newMezuak[nuevaFila, 3] = "0"; // Ezabatuta dagoen jakiteko aldagaia
+
+            mezuak = newMezuak;
+
+            showMezuak();
+            textBoxMensaje.Clear();
+        }
+
+        // Mezuak array berrira sartzeko
+        private void showMezuak()
+        {
+            flowLayoutPanel2.Controls.Clear();
+
+            for (int i = 0; i < mezuak.GetLength(0); i++)
+            {
+                // No mostrar mensajes eliminados
+                if (mezuak[i, 3] == "1")
+                    continue;
+
+                int indice = i;
+
+                Panel panelMezuak = new Panel();
+
+                panelMezuak.Width = flowLayoutPanel2.ClientSize.Width - 25;
+                panelMezuak.Height = 75;
+                panelMezuak.BorderStyle = BorderStyle.FixedSingle;
+
+                // Verde claro si está leído
+                if (mezuak[i, 2] == "1")
+                {
+                    panelMezuak.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    panelMezuak.BackColor = Color.White;
+                }
+
+                Label labelTarea = new Label();
+                labelTarea.Text = mezuak[i, 1];
+                labelTarea.Location = new Point(10, 10);
+                labelTarea.AutoSize = true;
+                labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
+
+                Label labelBezeroa = new Label();
+                labelBezeroa.Text = "Bezero: " + mezuak[i, 0];
+                labelBezeroa.Location = new Point(10, 45);
+                labelBezeroa.AutoSize = true;
+
+                panelMezuak.Controls.Add(labelTarea);
+                panelMezuak.Controls.Add(labelBezeroa);
+
+                // Permitir hacer clic tanto en el panel como en sus textos
+                panelMezuak.Click += (s, e) => GestionarMezua(indice);
+                labelTarea.Click += (s, e) => GestionarMezua(indice);
+                labelBezeroa.Click += (s, e) => GestionarMezua(indice);
+
+                flowLayoutPanel2.Controls.Add(panelMezuak);
+            }
+        }
+
+        // Mezua bidaltzerakoan comboBox datuekin lehenik
+
+        private void CargarBezeroak()
+        {
+            comboBoxBezeroak.Items.Clear();
+
+            for (int i = 0; i < bezeroak.GetLength(0); i++)
+            {
+                comboBoxBezeroak.Items.Add(bezeroak[i, 1]);
+            }
+
+            if (comboBoxBezeroak.Items.Count > 0)
+            {
+                comboBoxBezeroak.SelectedIndex = 0;
+            }
+        }
+
+        // Mezuak irakurrita edo ezabatuta daudela jakiteko eta aldatzeko
+
+        private void GestionarMezua(int indice)
+        {
+            // Si ya está eliminado, no hacer nada
+            if (mezuak[indice, 3] == "1")
+                return;
+
+            // Si no está leído, marcarlo como leído
+            if (mezuak[indice, 2] == "0")
+            {
+                mezuak[indice, 2] = "1";
+
+                showMezuak();
+            }
+            else
+            {
+                // Si ya está leído, ofrecer eliminarlo
+                DialogResult resultado = MessageBox.Show(
+                    "¿Quieres eliminar este mensaje?\n\n" + mezuak[indice, 1],
+                    "Eliminar mensaje",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // Eliminación lógica: no borramos la fila
+                    mezuak[indice, 3] = "1";
+
+                    showMezuak();
+                }
+            }
         }
 
         private void CheckWorker_CheckedChanged(object sender, EventArgs e)
@@ -224,5 +347,6 @@ namespace Erronka
             Form3 formulario = new Form3();
             formulario.Show();
         }
+
     }
 }
