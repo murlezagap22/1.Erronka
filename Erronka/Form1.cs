@@ -122,7 +122,7 @@ namespace Erronka
                 flowLayoutPanelTasks.Controls.Add(panelTarea);
             }
 
-            CargarBezeroak();
+            chargueBezeroak();
             showMezuak();
 
             for (int i = 0; i < trabajadores.GetLength(0); i++)
@@ -227,11 +227,11 @@ namespace Erronka
 
             for (int i = 0; i < mezuak.GetLength(0); i++)
             {
-                // No mostrar mensajes eliminados
+                // Ezabatuta dauden mezuak kendu
                 if (mezuak[i, 3] == "1")
                     continue;
 
-                int indice = i;
+                int indizea = i;
 
                 Panel panelMezuak = new Panel();
 
@@ -239,7 +239,7 @@ namespace Erronka
                 panelMezuak.Height = 75;
                 panelMezuak.BorderStyle = BorderStyle.FixedSingle;
 
-                // Verde claro si está leído
+                // Berdea irakurrita badagoen
                 if (mezuak[i, 2] == "1")
                 {
                     panelMezuak.BackColor = Color.LightGreen;
@@ -263,10 +263,10 @@ namespace Erronka
                 panelMezuak.Controls.Add(labelTarea);
                 panelMezuak.Controls.Add(labelBezeroa);
 
-                // Permitir hacer clic tanto en el panel como en sus textos
-                panelMezuak.Click += (s, e) => GestionarMezua(indice);
-                labelTarea.Click += (s, e) => GestionarMezua(indice);
-                labelBezeroa.Click += (s, e) => GestionarMezua(indice);
+                // Click egoteko edozein lekutan
+                panelMezuak.Click += (s, e) => mezuaKudeatu(indizea);
+                labelTarea.Click += (s, e) => mezuaKudeatu(indizea);
+                labelBezeroa.Click += (s, e) => mezuaKudeatu(indizea);
 
                 flowLayoutPanel2.Controls.Add(panelMezuak);
             }
@@ -274,7 +274,7 @@ namespace Erronka
 
         // Mezua bidaltzerakoan comboBox datuekin lehenik
 
-        private void CargarBezeroak()
+        private void chargueBezeroak()
         {
             comboBoxBezeroak.Items.Clear();
 
@@ -291,13 +291,13 @@ namespace Erronka
 
         // Mezuak irakurrita edo ezabatuta daudela jakiteko eta aldatzeko
 
-        private void GestionarMezua(int indice)
+        private void mezuaKudeatu(int indice)
         {
-            // Si ya está eliminado, no hacer nada
+            // Ezabatuta dagoenean ezer egin
             if (mezuak[indice, 3] == "1")
                 return;
 
-            // Si no está leído, marcarlo como leído
+            // Ez badago irakurrita, irakurrita dagoela jarri
             if (mezuak[indice, 2] == "0")
             {
                 mezuak[indice, 2] = "1";
@@ -306,17 +306,17 @@ namespace Erronka
             }
             else
             {
-                // Si ya está leído, ofrecer eliminarlo
+                // Irakurrita badago, ezabatzeko baieztapena irakutsi
                 DialogResult resultado = MessageBox.Show(
-                    "¿Quieres eliminar este mensaje?\n\n" + mezuak[indice, 1],
-                    "Eliminar mensaje",
+                    "¿Mezua ezabatu nahi duzu?\n\n" + mezuak[indice, 1],
+                    "Mezua ezabatu",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
 
                 if (resultado == DialogResult.Yes)
                 {
-                    // Eliminación lógica: no borramos la fila
+                    // Ezabaketa logikoa bezeroko aldetik kudeatu ahal izateko
                     mezuak[indice, 3] = "1";
 
                     showMezuak();
