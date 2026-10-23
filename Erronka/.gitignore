@@ -1,0 +1,91 @@
+# ================================
+
+# C# / .NET / Visual Studio
+
+# ================================
+
+# Visual Studio
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Compilación
+
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Code
+
+.vscode/
+
+# JetBrains Rider
+
+.idea/
+
+# NuGet
+
+packages/
+*.nupkg
+*.snupkg
+
+# Logs
+
+*.log
+
+# Test
+
+TestResults/
+*.trx
+
+# Archivos temporales
+
+*.tmp
+*.temp
+*.cache
+
+# Archivos del sistema
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de Visio
+
+*.vsdx
+
+# Archivos temporales de Office
+
+~$*.docx
+~$*.xlsx
+~$*.pptx
+~$*.vsdx
+Erronka/.vs/Erronka.slnx/DesignTimeBuild/.dtbcache.v2
+Erronka/.vs/Erronka.slnx/v18/.futdcache.v2
+Erronka/.vs/Erronka.slnx/v18/.suo
+Erronka/.vs/Erronka.slnx/v18/DocumentLayout.backup.json
+Erronka/.vs/Erronka.slnx/v18/DocumentLayout.json
+Erronka/.vs/ProjectEvaluation/erronka.metadata.v10.bin
+Erronka/.vs/ProjectEvaluation/erronka.projects.v10.bin
+Erronka/.vs/ProjectEvaluation/erronka.strings.v10.bin
+Erronka/bin/Debug/net10.0-windows/Erronka.dll
+Erronka/bin/Debug/net10.0-windows/Erronka.exe
+Erronka/bin/Debug/net10.0-windows/Erronka.pdb
+Erronka/obj/Debug/net10.0-windows/apphost.exe
+Erronka/obj/Debug/net10.0-windows/Erronka.AssemblyInfo.cs
+Erronka/obj/Debug/net10.0-windows/Erronka.AssemblyInfoInputs.cache
+Erronka/obj/Debug/net10.0-windows/Erronka.assets.cache
+Erronka/obj/Debug/net10.0-windows/Erronka.csproj.FileListAbsolute.txt
+Erronka/obj/Debug/net10.0-windows/Erronka.csproj.GenerateResource.cache
+Erronka/obj/Debug/net10.0-windows/Erronka.dll
+Erronka/obj/Debug/net10.0-windows/Erronka.GeneratedMSBuildEditorConfig.editorconfig
+Erronka/obj/Debug/net10.0-windows/Erronka.genruntimeconfig.cache
+Erronka/obj/Debug/net10.0-windows/Erronka.pdb
+Erronka/obj/Debug/net10.0-windows/Erronka.sourcelink.json
+Erronka/obj/Debug/net10.0-windows/ref/Erronka.dll
+Erronka/obj/Debug/net10.0-windows/refint/Erronka.dll
+Erronka/obj/Erronka.csproj.nuget.dgspec.json
+Erronka/obj/project.assets.json
+Erronka/obj/project.nuget.cache

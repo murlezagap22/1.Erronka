@@ -82,7 +82,7 @@
             // 
             textBoxMensaje.AccessibleRole = AccessibleRole.TitleBar;
             textBoxMensaje.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxMensaje.ForeColor = Color.Yellow;
+            textBoxMensaje.ForeColor = Color.Black;
             textBoxMensaje.Location = new Point(12, 12);
             textBoxMensaje.Multiline = true;
             textBoxMensaje.Name = "textBoxMensaje";
