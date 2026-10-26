@@ -19,16 +19,17 @@ namespace Erronka
         };
 
         // Definitu mezuak arraya 
-        private string[,] mezuak = {};
+        private string[,] mezuak = { };
 
-        private string[,] tareas =
+        private string[,] egitekoak =
         {
-            { "Jon", "Revisar instalación eléctrica" },
-            { "Ane", "Cambiar bombilla del almacén" },
-            { "Mikel", "Reparar ordenador" },
-            { "Nerea", "Configurar impresora" },
-            { "Iker", "Revisar conexión a Internet" }
+            { "Jon", "Eskuoihalak" },
+            { "Ane", "Izarak" },
+            { "Mikel", "Zaborra" },
+            { "Iker", "Jatetxea" }
         };
+
+        private List<TextBox> inputsLangileak = new List<TextBox>();
 
         public Form1()
         {
@@ -36,33 +37,22 @@ namespace Erronka
 
             btnHasiLanaldia.Visible = false;
 
-
-
-            //            string[,] mezuak =
-            //{
-            //                { "Jon", "Revisar instalación eléctrica" },
-            //                { "Ane", "Cambiar bombilla del almacén" },
-            //                { "Mikel", "Reparar ordenador" },
-            //                { "Nerea", "Configurar impresora" },
-            //                { "Iker", "Revisar conexión a Internet" }
-            //            };
-
-            string[] trabajadores =
+            string[] workers =
             {
                 "Ane",
                 "Iker"
             };
 
             // Sortu bezero desberdinak eta hauen botoiak
-            int botonesPorFila = 9;
-            int anchoBoton = flowLayoutPanelBotoiak.ClientSize.Width / botonesPorFila;
 
             for (int i = 0; i < bezeroak.GetLength(0); i++)
             {
+                //Definitu panelaren baloreak
                 Panel panel = new Panel();
                 panel.Width = 170;
                 panel.Height = 60;
 
+                // Botoia clickaretzarekoan bezeroaren pantaila irekiko duen funtzioarekin
                 Button botoia = new Button();
                 botoia.Text = bezeroak[i, 1];
                 botoia.Width = 120;
@@ -71,6 +61,7 @@ namespace Erronka
                 botoia.Click += BezeroaKlikatu;
                 botoia.Location = new Point(0, 0);
 
+                // Bezeroa editatzeko botoia
                 Button editatuBotoia = new Button();
                 editatuBotoia.Text = "✏️";
                 editatuBotoia.Width = 50;
@@ -79,45 +70,52 @@ namespace Erronka
                 editatuBotoia.Click += BezeroaAldatu;
                 editatuBotoia.Location = new Point(120, 0);
 
+                // Dena sartu panel barrura
                 panel.Controls.Add(botoia);
                 panel.Controls.Add(editatuBotoia);
 
                 flowLayoutPanelBotoiak.Controls.Add(panel);
             }
 
-            for (int i = 0; i < tareas.GetLength(0); i++)
+            for (int i = 0; i < egitekoak.GetLength(0); i++)
             {
+                // Eginkizunak erakusteko panela definitu
                 Panel panelTarea = new Panel();
 
                 panelTarea.Width = flowLayoutPanelTasks.ClientSize.Width - 25;
                 panelTarea.Height = 75;
                 panelTarea.BorderStyle = BorderStyle.FixedSingle;
 
+                // Honen testua definitu
                 Label labelTarea = new Label();
-                labelTarea.Text = tareas[i, 1];
+                labelTarea.Text = egitekoak[i, 1];
                 labelTarea.Location = new Point(10, 10);
                 labelTarea.AutoSize = true;
                 labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
 
+                // Bezeroaren izena erakutsi
                 Label labelBezeroa = new Label();
-                labelBezeroa.Text = "Bezero: " + tareas[i, 0];
+                labelBezeroa.Text = "Bezero: " + egitekoak[i, 0];
                 labelBezeroa.Location = new Point(10, 45);
                 labelBezeroa.AutoSize = true;
 
+                // Langilearen goiko testua definitu
                 Label labelLangilea = new Label();
                 labelLangilea.Text = "Langilea:";
                 labelLangilea.Location = new Point(180, 45);
                 labelLangilea.AutoSize = true;
 
-                TextBox inputTrabajador = new TextBox();
-                inputTrabajador.Location = new Point(250, 42);
-                inputTrabajador.Width = 150;
-                inputTrabajador.ReadOnly = true;
+                // Langilearen izena gordeko duen input-a definitu
+                TextBox inputLangile = new TextBox();
+                inputLangile.Location = new Point(250, 42);
+                inputLangile.Width = 150;
+                inputLangile.ReadOnly = true;
+                inputsLangileak.Add(inputLangile);
 
                 panelTarea.Controls.Add(labelTarea);
                 panelTarea.Controls.Add(labelBezeroa);
                 panelTarea.Controls.Add(labelLangilea);
-                panelTarea.Controls.Add(inputTrabajador);
+                panelTarea.Controls.Add(inputLangile);
 
                 flowLayoutPanelTasks.Controls.Add(panelTarea);
             }
@@ -125,7 +123,8 @@ namespace Erronka
             chargueBezeroak();
             showMezuak();
 
-            for (int i = 0; i < trabajadores.GetLength(0); i++)
+            // Langileen panela
+            for (int i = 0; i < workers.GetLength(0); i++)
             {
                 Panel panelWorkers = new Panel();
 
@@ -134,20 +133,20 @@ namespace Erronka
                 panelWorkers.BorderStyle = BorderStyle.FixedSingle;
 
                 Label labelTarea = new Label();
-                labelTarea.Text = trabajadores[i];
+                labelTarea.Text = workers[i];
                 labelTarea.Location = new Point(10, 10);
                 labelTarea.AutoSize = true;
                 labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
 
                 CheckBox checkWorker = new CheckBox();
-                checkWorker.Text = "Dentro";
+                checkWorker.Text = "Barruan";
                 checkWorker.Location = new Point(10, 35);
                 checkWorker.AutoSize = true;
 
-                // Guardamos el trabajador asociado
-                checkWorker.Tag = trabajadores[i];
+                // Langilea gorde
+                checkWorker.Tag = workers[i];
 
-                // Evento cuando cambia el CheckBox
+                // Funtzioa check a aldatzerakoan
                 checkWorker.CheckedChanged += CheckWorker_CheckedChanged;
 
                 panelWorkers.Controls.Add(labelTarea);
@@ -157,26 +156,45 @@ namespace Erronka
             }
         }
 
+        // Bezeroa clickatzerakoan egingo duen funtzioa beste Formulario bat irekitzen
         private void BezeroaKlikatu(object sender, EventArgs e)
         {
+            // Erreferentzia clickatutako botoiari
             Button botoia = (Button)sender;
 
+            // Bezeroaren id-a gorde botoitik aterata
             string id = (string)botoia.Tag ?? null;
             string nombre = botoia.Text;
 
+            // Formulario berria definitu
             Form2 formulario = new Form2(id, nombre);
             formulario.Show();
         }
 
+        // Bezeroak aldatzeko botoia
         private void BezeroaAldatu(object sender, EventArgs e)
         {
-            MessageBox.Show("Bezeroa aldatu nahi duzu?");
+            // Erantzuna definitu gero baldintza sortzeko
+            DialogResult erantzuna = MessageBox.Show(
+            "Bezeroa aldatu nahi duzu?",
+            "Baieztapena",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+            );
+
+            // Erantzuna EZ bada, hurrengo pausura ez da pasatuko
+            if (erantzuna == DialogResult.No)
+            {
+                return;
+            }
+
             Button botoia = (Button)sender;
 
             botoia.BackColor = Color.AliceBlue;
 
             Form4 formulario = new Form4();
             formulario.Show();
+
         }
 
         // Mezua
@@ -273,7 +291,6 @@ namespace Erronka
         }
 
         // Mezua bidaltzerakoan comboBox datuekin lehenik
-
         private void chargueBezeroak()
         {
             comboBoxBezeroak.Items.Clear();
@@ -290,7 +307,6 @@ namespace Erronka
         }
 
         // Mezuak irakurrita edo ezabatuta daudela jakiteko eta aldatzeko
-
         private void mezuaKudeatu(int indice)
         {
             // Ezabatuta dagoenean ezer egin
@@ -306,7 +322,8 @@ namespace Erronka
             }
             else
             {
-                // Irakurrita badago, ezabatzeko baieztapena irakutsi
+                // Irakurrita badago, ezabatzeko baieztapena erakutsi
+
                 DialogResult resultado = MessageBox.Show(
                     "¿Mezua ezabatu nahi duzu?\n\n" + mezuak[indice, 1],
                     "Mezua ezabatu",
@@ -324,9 +341,10 @@ namespace Erronka
             }
         }
 
+        // Jakiteko langileak barruan dauden ala ez
         private void CheckWorker_CheckedChanged(object sender, EventArgs e)
         {
-            bool hayTrabajadorDentro = false;
+            bool workersIn = false;
 
             foreach (Panel panel in flowLayoutPanelWorkers.Controls)
             {
@@ -334,19 +352,122 @@ namespace Erronka
 
                 if (checkBox != null && checkBox.Checked)
                 {
-                    hayTrabajadorDentro = true;
+                    workersIn = true;
                     break;
                 }
             }
 
-            btnHasiLanaldia.Visible = hayTrabajadorDentro;
+            // Langilea barruan badago, botoia erakutsi
+            btnHasiLanaldia.Visible = workersIn;
         }
+
+        private List<string> LangileakLortu()
+        {
+            List<string> langileakBarruan = new List<string>();
+
+            foreach (Panel panel in flowLayoutPanelWorkers.Controls)
+            {
+                CheckBox checkBox = panel.Controls.OfType<CheckBox>().FirstOrDefault();
+
+                if (checkBox != null && checkBox.Checked)
+                {
+                    string nombre = checkBox.Tag as string;
+
+                    if (nombre != null)
+                    {
+                        langileakBarruan.Add(nombre);
+                    }
+                }
+            }
+
+            return langileakBarruan;
+        }
+
 
         private void AddClient_Click(object sender, EventArgs e)
         {
             Form3 formulario = new Form3();
             formulario.Show();
         }
+
+
+        private void btnHasiLanaldia_Click(object sender, EventArgs e)
+        {
+            // Obtener los trabajadores que están dentro
+            List<string> langileak = LangileakLortu();
+
+            if (langileak.Count == 0)
+            {
+                MessageBox.Show("Ez dago langilerik barruan.");
+                return;
+            }
+
+            // Evitar iniciar otra jornada mientras esta sigue activa
+            btnHasiLanaldia.Enabled = false;
+
+            // Índice compartido para repartir los trabajos
+            int hurrengoLana = -1;
+
+            // Crear un hilo por trabajador
+            foreach (string langilea in langileak)
+            {
+                Thread haria = new Thread(() =>
+                {
+                    while (true)
+                    {
+                        // Obtener el siguiente trabajo disponible
+                        int i = Interlocked.Increment(ref hurrengoLana);
+
+                        if (i >= egitekoak.GetLength(0))
+                            break;
+
+                        // Mostrar qué trabajador realiza este trabajo
+                        TextBox input = inputsLangileak[i];
+
+                        input.Invoke((MethodInvoker)(() =>
+                        {
+                            input.Text = langilea;
+                        }));
+
+                        string lana = egitekoak[i, 1];
+                        int denbora = DenboraLortu(lana);
+
+                        Thread.Sleep(denbora);
+
+                        // Aquí el trabajador ha terminado el trabajo
+                        // y continuará con el siguiente del bucle
+                    }
+                });
+
+                haria.IsBackground = true;
+                haria.Start();
+            }
+        }
+
+
+        private int DenboraLortu(string lana)
+        {
+            switch (lana)
+            {
+                case "Eskuoihalak":
+                    return 2000;
+
+                case "Izarak":
+                    return 3000;
+
+                case "Zaborra":
+                    return 1000;
+
+                case "Jatetxea":
+                    return 1000;
+
+                default:
+                    return 0;
+            }
+        }
+
+
+
 
     }
 }

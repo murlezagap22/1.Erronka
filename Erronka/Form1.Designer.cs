@@ -171,6 +171,7 @@
             btnHasiLanaldia.TabIndex = 1;
             btnHasiLanaldia.Text = "Hasi lanaldia";
             btnHasiLanaldia.UseVisualStyleBackColor = false;
+            btnHasiLanaldia.Click += btnHasiLanaldia_Click;
             // 
             // flowLayoutPanelWorkers
             // 
