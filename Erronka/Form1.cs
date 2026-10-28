@@ -31,11 +31,21 @@ namespace Erronka
 
         private List<TextBox> inputsLangileak = new List<TextBox>();
 
+        private bool lanaldia = false;
+
+        private Color coloreOriginala;
+
+        private bool[] egindakoLanak;
+
         public Form1()
         {
             InitializeComponent();
 
             btnHasiLanaldia.Visible = false;
+
+            coloreOriginala = btnHasiLanaldia.BackColor;
+
+            egindakoLanak = new bool[egitekoak.GetLength(0)];
 
             string[] workers =
             {
@@ -393,7 +403,19 @@ namespace Erronka
 
         private void btnHasiLanaldia_Click(object sender, EventArgs e)
         {
-            // Obtener los trabajadores que están dentro
+            lanaldia = !lanaldia;
+            if (lanaldia)
+            {
+                btnHasiLanaldia.Text = "Bukatu lanaldia";
+                btnHasiLanaldia.BackColor = Color.Red;
+                btnHasiLanaldia.ForeColor = Color.White;
+            } else
+            {
+                btnHasiLanaldia.Text = "Hasi lanaldia";
+                btnHasiLanaldia.BackColor = coloreOriginala;
+                btnHasiLanaldia.ForeColor = Color.Black;
+            }
+
             List<string> langileak = LangileakLortu();
 
             if (langileak.Count == 0)
@@ -402,26 +424,29 @@ namespace Erronka
                 return;
             }
 
-            // Evitar iniciar otra jornada mientras esta sigue activa
-            btnHasiLanaldia.Enabled = false;
-
-            // Índice compartido para repartir los trabajos
             int hurrengoLana = -1;
 
-            // Crear un hilo por trabajador
             foreach (string langilea in langileak)
             {
                 Thread haria = new Thread(() =>
                 {
                     while (true)
                     {
-                        // Obtener el siguiente trabajo disponible
+                        if (!lanaldia)
+                            break;
                         int i = Interlocked.Increment(ref hurrengoLana);
 
                         if (i >= egitekoak.GetLength(0))
                             break;
 
-                        // Mostrar qué trabajador realiza este trabajo
+                        if (egindakoLanak[i])
+                            continue;
+
+                        string lana = egitekoak[i, 1];
+                        int denbora = DenboraLortu(lana);
+
+                        Thread.Sleep(denbora);
+
                         TextBox input = inputsLangileak[i];
 
                         input.Invoke((MethodInvoker)(() =>
@@ -429,13 +454,11 @@ namespace Erronka
                             input.Text = langilea;
                         }));
 
-                        string lana = egitekoak[i, 1];
-                        int denbora = DenboraLortu(lana);
+                        if (lanaldia)
+                        {
+                            egindakoLanak[i] = true;
+                        }
 
-                        Thread.Sleep(denbora);
-
-                        // Aquí el trabajador ha terminado el trabajo
-                        // y continuará con el siguiente del bucle
                     }
                 });
 
