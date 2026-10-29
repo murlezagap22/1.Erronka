@@ -78,6 +78,7 @@
             // 
             // comboBoxOstatuMota
             // 
+            comboBoxOstatuMota.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxOstatuMota.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBoxOstatuMota.FormattingEnabled = true;
             comboBoxOstatuMota.Location = new Point(81, 261);
@@ -107,6 +108,7 @@
             acceptButton.TabIndex = 6;
             acceptButton.Text = "Gorde";
             acceptButton.UseVisualStyleBackColor = false;
+            acceptButton.Click += acceptButton_Click;
             // 
             // Form3
             // 
@@ -124,11 +126,6 @@
             Text = "Form3";
             ResumeLayout(false);
             PerformLayout();
-        }
-
-        private void denyButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

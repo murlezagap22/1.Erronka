@@ -7,15 +7,15 @@ namespace Erronka
 
         private string[,] bezeroak =
         {
-            { "1", "Jon" },
-            { "2", "Ane" },
-            { "3", "Mikel" },
-            { "4", "Iker" },
-            { "5", "Nerea" },
-            { "6", "Otro" },
-            { "7", "YUUUU" },
-            { "8", "SUUUUU" },
-            { "9", "asdasdasd" }
+            { "1", "Jon", "2" },
+            { "2", "Ane", "2" },
+            { "3", "Mikel", "2" },
+            { "4", "Iker", "2" },
+            { "5", "Nerea", "2" },
+            { "6", "Otro", "2" },
+            { "7", "YUUUU", "2" },
+            { "8", "SUUUUU", "2" },
+            { "9", "asdasdasd", "2" }
         };
 
         // Definitu mezuak arraya 
@@ -57,44 +57,14 @@ namespace Erronka
 
             // Sortu bezero desberdinak eta hauen botoiak
 
-            for (int i = 0; i < bezeroak.GetLength(0); i++)
-            {
-                //Definitu panelaren baloreak
-                Panel panel = new Panel();
-                panel.Width = 170;
-                panel.Height = 60;
-
-                // Botoia clickaretzarekoan bezeroaren pantaila irekiko duen funtzioarekin
-                Button botoia = new Button();
-                botoia.Text = bezeroak[i, 1];
-                botoia.Width = 120;
-                botoia.Height = 60;
-                botoia.Tag = bezeroak[i, 0];
-                botoia.Click += BezeroaKlikatu;
-                botoia.Location = new Point(0, 0);
-
-                // Bezeroa editatzeko botoia
-                Button editatuBotoia = new Button();
-                editatuBotoia.Text = "✏️";
-                editatuBotoia.Width = 50;
-                editatuBotoia.Height = 60;
-                editatuBotoia.Tag = bezeroak[i, 0];
-                editatuBotoia.Click += BezeroaAldatu;
-                editatuBotoia.Location = new Point(120, 0);
-
-                // Dena sartu panel barrura
-                panel.Controls.Add(botoia);
-                panel.Controls.Add(editatuBotoia);
-
-                flowLayoutPanelBotoiak.Controls.Add(panel);
-            }
+            BezeroakErakutsi();
 
             for (int i = 0; i < egitekoak.GetLength(0); i++)
             {
                 // Eginkizunak erakusteko panela definitu
                 Panel panelTarea = new Panel();
 
-                panelTarea.Width = flowLayoutPanelTasks.ClientSize.Width - 25;
+                panelTarea.Width = flowLayoutPanelTasks.ClientSize.Width - 7;
                 panelTarea.Height = 75;
                 panelTarea.BorderStyle = BorderStyle.FixedSingle;
 
@@ -178,6 +148,44 @@ namespace Erronka
                 panelWorkers.Controls.Add(checkWorker);
 
                 flowLayoutPanelWorkers.Controls.Add(panelWorkers);
+            }
+        }
+
+        private void BezeroakErakutsi()
+        {
+            // Aurreko botoiak ezabatu
+            flowLayoutPanelBotoiak.Controls.Clear();
+
+            for (int i = 0; i < bezeroak.GetLength(0); i++)
+            {
+                // Panelaren baloreak definitu
+                Panel panel = new Panel();
+                panel.Width = 170;
+                panel.Height = 60;
+
+                // Bezeroaren botoia
+                Button botoia = new Button();
+                botoia.Text = bezeroak[i, 1];
+                botoia.Width = 120;
+                botoia.Height = 60;
+                botoia.Tag = bezeroak[i, 0];
+                botoia.Click += BezeroaKlikatu;
+                botoia.Location = new Point(0, 0);
+
+                // Editatzeko botoia
+                Button editatuBotoia = new Button();
+                editatuBotoia.Text = "✏️";
+                editatuBotoia.Width = 50;
+                editatuBotoia.Height = 60;
+                editatuBotoia.Tag = bezeroak[i, 0];
+                editatuBotoia.Click += BezeroaAldatu;
+                editatuBotoia.Location = new Point(120, 0);
+
+                // Kontrolak panelean sartu
+                panel.Controls.Add(botoia);
+                panel.Controls.Add(editatuBotoia);
+
+                flowLayoutPanelBotoiak.Controls.Add(panel);
             }
         }
 
@@ -411,7 +419,7 @@ namespace Erronka
 
         private void AddClient_Click(object sender, EventArgs e)
         {
-            Form3 formulario = new Form3();
+            Form3 formulario = new Form3(this);
             formulario.Show();
         }
 
@@ -438,6 +446,35 @@ namespace Erronka
                 MessageBox.Show("Ez dago langilerik barruan.");
                 return;
             }
+
+            if (lanaldia)
+            {
+                foreach (Panel panel in flowLayoutPanelWorkers.Controls)
+                {
+                    foreach (Control kontrola in panel.Controls)
+                    {
+                        if (kontrola is CheckBox checkWorker)
+                        {
+                            checkWorker.Enabled = false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Panel panel in flowLayoutPanelWorkers.Controls)
+                {
+                    foreach (Control kontrola in panel.Controls)
+                    {
+                        if (kontrola is CheckBox checkWorker)
+                        {
+                            checkWorker.Enabled = true;
+                        }
+                    }
+                }
+            }
+
+
 
             int hurrengoLana = -1;
 
@@ -515,7 +552,32 @@ namespace Erronka
             }
         }
 
+        // Bezeroa gehitzeko funtzioa
+        public void BezeroaGehitu(string izena, string ostatuMota)
+        {
+            // Array-aren zenbateko gero kopia bat egiteko bat gehiagorekin
+            int kopurua = bezeroak.GetLength(0);
 
+            string[,] berria = new string[kopurua + 1, 3];
+
+            for (int i = 0; i < kopurua; i++)
+            {
+                berria[i, 0] = bezeroak[i, 0];
+                berria[i, 1] = bezeroak[i, 1];
+                berria[i, 2] = bezeroak[i, 2];
+            }
+
+            // Berria sartu array berrian azken lekuan
+            berria[kopurua, 0] = (kopurua + 1).ToString();
+            berria[kopurua, 1] = izena;
+            berria[kopurua, 2] = ostatuMota;
+
+            // Berdindu hasieran geneukan array-arekin
+            bezeroak = berria;
+
+            // Berriro bezeroak pintatu
+            BezeroakErakutsi();
+        }
 
 
     }

@@ -165,6 +165,7 @@
             // btnHasiLanaldia
             // 
             btnHasiLanaldia.BackColor = SystemColors.MenuHighlight;
+            btnHasiLanaldia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnHasiLanaldia.Location = new Point(23, 485);
             btnHasiLanaldia.Name = "btnHasiLanaldia";
             btnHasiLanaldia.Size = new Size(130, 56);
@@ -183,6 +184,7 @@
             // 
             // comboBoxBezeroak
             // 
+            comboBoxBezeroak.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxBezeroak.FormattingEnabled = true;
             comboBoxBezeroak.Location = new Point(1266, 198);
             comboBoxBezeroak.Name = "comboBoxBezeroak";
