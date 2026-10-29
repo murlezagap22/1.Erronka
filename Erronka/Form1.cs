@@ -30,6 +30,8 @@ namespace Erronka
         };
 
         private List<TextBox> inputsLangileak = new List<TextBox>();
+        private List<Label> labelsEginda = new List<Label>();
+        private List<Panel> panelesTareas = new List<Panel>();
 
         private bool lanaldia = false;
 
@@ -122,10 +124,23 @@ namespace Erronka
                 inputLangile.ReadOnly = true;
                 inputsLangileak.Add(inputLangile);
 
+                // Lana amaitzean "Eginda" erakutsiko duen Label-a
+                Label labelEginda = new Label();
+                labelEginda.Text = "";
+                labelEginda.Location = new Point(450, 40);
+                labelEginda.AutoSize = false;
+                labelEginda.Size = new Size(200, 60);
+                labelEginda.Font = new Font("Arial", 10, FontStyle.Bold);
+                labelEginda.ForeColor = Color.Black;
+                labelEginda.Font = new Font(labelEginda.Font, FontStyle.Bold);
+                labelsEginda.Add(labelEginda);
+
                 panelTarea.Controls.Add(labelTarea);
                 panelTarea.Controls.Add(labelBezeroa);
                 panelTarea.Controls.Add(labelLangilea);
                 panelTarea.Controls.Add(inputLangile);
+                panelTarea.Controls.Add(labelEginda);
+                panelesTareas.Add(panelTarea);
 
                 flowLayoutPanelTasks.Controls.Add(panelTarea);
             }
@@ -446,6 +461,17 @@ namespace Erronka
                         int denbora = DenboraLortu(lana);
 
                         Thread.Sleep(denbora);
+
+                        labelsEginda[i].Invoke((MethodInvoker)(() =>
+                        {
+                            labelsEginda[i].Text = "Eginda";
+                        }));
+
+                        labelsEginda[i].Invoke((MethodInvoker)(() =>
+                        {
+                            labelsEginda[i].Text = "Eginda";
+                            panelesTareas[i].BackColor = Color.FromArgb(220, 245, 220);
+                        }));
 
                         TextBox input = inputsLangileak[i];
 
