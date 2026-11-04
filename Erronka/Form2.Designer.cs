@@ -104,6 +104,7 @@
             button5.TabIndex = 5;
             button5.Text = "Jatetxea";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -114,6 +115,7 @@
             button4.TabIndex = 4;
             button4.Text = "Zaborra";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -124,6 +126,7 @@
             button3.TabIndex = 3;
             button3.Text = "Izarak";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -134,6 +137,7 @@
             button2.TabIndex = 2;
             button2.Text = "Eskuoihalak";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 

@@ -11,63 +11,68 @@ namespace Erronka
     public partial class Form2 : Form
     {
         private Form1 formulario1;
-        private string[,] mezuak;
-        private string bezeroIzena;
+        private Bezeroa bezeroHautatua;
 
-        public Form2(Form1 form, string id, string nombre, string[,] mensajes)
+        public Form2(Form1 form, Bezeroa bezeroa)
         {
             InitializeComponent();
 
             formulario1 = form;
-            bezeroIzena = nombre;
-            mezuak = mensajes;
+            bezeroHautatua = bezeroa; // Guardamos el objeto recibido
 
-            labelIzena.Text = "Bezeroa: " + nombre;
+            // Accedemos directamente a las propiedades del objeto
+            labelIzena.Text = "Bezeroa: " + bezeroHautatua.Izena;
 
-            ErakutsiMezuak();
+            // Le pasamos su lista de mensajes directamente a la función
+            ErakutsiMezuak(bezeroHautatua.Mezuak);
+            showAtasakBezero();
         }
 
-        private void ErakutsiMezuak()
+        public void ErakutsiMezuak(List<Mezua> mezuakJasota)
         {
             flowLayoutPanel2.Controls.Clear();
 
-            for (int i = 0; i < mezuak.GetLength(0); i++)
-            {
-                // Ezabatuak dauden mezuak kendu
-                if (mezuak[i, 3] == "1")
-                    continue;
+            if (mezuakJasota == null) return;
 
-                // Beste bezero batzuen mezuak kendu
-                if (mezuak[i, 0] != bezeroIzena)
+            // Usamos un bucle for tradicional para conservar el índice del mensaje
+            for (int i = 0; i < mezuakJasota.Count; i++)
+            {
+                Mezua mezua = mezuakJasota[i];
+
+                // 1. Ezabatuak dauden mezuak kendu (bool denez, zuzenean egiaztatu)
+                if (mezua.Ezabatuta || mezua.EzabatutaAdmin)
                     continue;
 
                 int indizea = i;
 
-                Panel panelMezuak = new Panel();
+                Panel panelMezuak = new Panel
+                {
+                    Width = flowLayoutPanel2.ClientSize.Width - 25, // Margen para evitar scrollbar horizontal
+                    Height = 75,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    // 2. Osatuta badago LightGreen, bestela White
+                    BackColor = mezua.Osatuta ? Color.LightGreen : Color.White
+                };
 
-                panelMezuak.Width = flowLayoutPanel2.ClientSize.Width - 8;
-                panelMezuak.Height = 75;
-                panelMezuak.BorderStyle = BorderStyle.FixedSingle;
+                Label labelTarea = new Label
+                {
+                    Text = mezua.Testua,
+                    Location = new Point(10, 10),
+                    AutoSize = true,
+                    Font = new Font(this.Font, FontStyle.Bold)
+                };
 
-                if (mezuak[i, 2] == "1")
-                    panelMezuak.BackColor = Color.LightGreen;
-                else
-                    panelMezuak.BackColor = Color.White;
-
-                Label labelTarea = new Label();
-                labelTarea.Text = mezuak[i, 1];
-                labelTarea.Location = new Point(10, 10);
-                labelTarea.AutoSize = true;
-                labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
-
-                Label labelBezeroa = new Label();
-                labelBezeroa.Text = "Bezero: " + mezuak[i, 0];
-                labelBezeroa.Location = new Point(10, 45);
-                labelBezeroa.AutoSize = true;
+                Label labelBezeroa = new Label
+                {
+                    Text = "Bezero: " + bezeroHautatua.Izena, // Bezeroaren izena objetutik
+                    Location = new Point(10, 45),
+                    AutoSize = true
+                };
 
                 panelMezuak.Controls.Add(labelTarea);
                 panelMezuak.Controls.Add(labelBezeroa);
 
+                // Ekintza berdinak mantentzen ditugu indizearekin
                 panelMezuak.Click += (s, e) => mezuaKudeatu(indizea);
                 labelTarea.Click += (s, e) => mezuaKudeatu(indizea);
                 labelBezeroa.Click += (s, e) => mezuaKudeatu(indizea);
@@ -78,23 +83,27 @@ namespace Erronka
 
         private void mezuaKudeatu(int indice)
         {
-            // Ezabatuta dagoenean ezer egin
-            if (mezuak[indice, 3] == "1")
+            // Obtener la instancia directa del mensaje
+            Mezua mezua = bezeroHautatua.Mezuak[indice];
+
+            // 1. Ezabatuta dagoenean ezer ez egin
+            if (mezua.Ezabatuta)
                 return;
 
-            // Ez badago irakurrita, irakurrita dagoela jarri
-            if (mezuak[indice, 2] == "0")
+            // 2. Ez badago irakurrita / osatuta, irakurrita gisa jarri
+            if (!mezua.Osatuta)
             {
-                mezuak[indice, 2] = "1";
+                mezua.Osatuta = true;
 
-                ErakutsiMezuak();
+                // Bista berriro kargatu bezeroaren mezuak pasatuz
+                ErakutsiMezuak(bezeroHautatua.Mezuak);
+                formulario1.showMezuak();
             }
             else
             {
-                // Irakurrita badago, ezabatzeko baieztapena erakutsi
-
+                // 3. Irakurrita badago, ezabatzeko baieztapena erakutsi
                 DialogResult resultado = MessageBox.Show(
-                    "¿Mezua ezabatu nahi duzu?\n\n" + mezuak[indice, 1],
+                    "¿Mezua ezabatu nahi duzu?\n\n" + mezua.Testua,
                     "Mezua ezabatu",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -102,13 +111,87 @@ namespace Erronka
 
                 if (resultado == DialogResult.Yes)
                 {
-                    // Ezabaketa logikoa bezeroko aldetik kudeatu ahal izateko
-                    mezuak[indice, 3] = "1";
+                    // Ezabaketa logikoa (propietatea true jarri)
+                    mezua.Ezabatuta = true;
 
-                    ErakutsiMezuak();
+                    // Bista berriro kargatu
+                    ErakutsiMezuak(bezeroHautatua.Mezuak);
+                    formulario1.showMezuak();
                 }
             }
         }
+
+        public void showAtasakBezero()
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+                // 2. Bezero bakoitzaren Atasak zerrenda zeharkatu
+                foreach (Atasa atasa in bezeroHautatua.Atasak)
+                {
+                    Panel panelTarea = new Panel
+                    {
+                        Width = flowLayoutPanel1.ClientSize.Width - 8,
+                        Height = 75,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Tag = atasa // Atasa objetua panelean gordetzen dugu
+                    };
+
+                    // Honen testua definitu
+                    Label labelTarea = new Label
+                    {
+                        Text = atasa.Testua,
+                        Location = new Point(10, 10),
+                        AutoSize = true,
+                        Font = new Font(this.Font, FontStyle.Bold)
+                    };
+
+                    // Bezeroaren izena erakutsi
+                    Label labelBezeroa = new Label
+                    {
+                        Text = "Bezero: " + bezeroHautatua.Izena,
+                        Location = new Point(10, 45),
+                        AutoSize = true
+                    };
+
+                    // Langilearen goiko testua definitu
+                    Label labelLangilea = new Label
+                    {
+                        Text = "Langilea:",
+                        Location = new Point(180, 45),
+                        AutoSize = true
+                    };
+
+                    // Langilearen izena gordeko duen input-a definitu
+                    TextBox inputLangile = new TextBox
+                    {
+                        Text = atasa.Langilea, // Objetuko langilea erakutsi
+                        Location = new Point(250, 42),
+                        Width = 150,
+                        ReadOnly = true
+                    };
+
+                    // Lana amaitzean "Eginda" erakutsiko duen Label-a
+                    Label labelEginda = new Label
+                    {
+                        Text = atasa.Eginda ? "EGINDA" : "",
+                        Location = new Point(450, 40),
+                        Size = new Size(200, 30),
+                        Font = new Font("Arial", 10, FontStyle.Bold),
+                        ForeColor = atasa.Eginda ? Color.Green : Color.Black
+                    };
+
+                    // Kontrolak panelean sartu
+                    panelTarea.Controls.Add(labelTarea);
+                    panelTarea.Controls.Add(labelBezeroa);
+                    panelTarea.Controls.Add(labelLangilea);
+                    panelTarea.Controls.Add(inputLangile);
+                    panelTarea.Controls.Add(labelEginda);
+
+                    flowLayoutPanel1.Controls.Add(panelTarea);
+                }
+            
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -120,11 +203,76 @@ namespace Erronka
                 return;
             }
 
-            mezuak = formulario1.MezuaGehitu(mezuak, bezeroIzena, text);
+            // 1. Crear y añadir el nuevo objeto Mezua a la lista del cliente actual
+            bezeroHautatua.Mezuak.Add(new Mezua(text, osatuta: false, ezabatuta: false));
 
-            ErakutsiMezuak();
+            // 2. Refrescar la vista local en Form2 pasándole la lista actualizada
+            ErakutsiMezuak(bezeroHautatua.Mezuak);
+            formulario1.showMezuak();
 
+            // 3. Limpiar el cuadro de texto
             textBox1.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // 2. Atasa berria sortu eta bezeroaren zerrendan sartu
+            Atasa atasaBerria = new Atasa("Eskuoihalak", langilea: "", eginda: false);
+            bezeroHautatua.Atasak.Add(atasaBerria);
+            showAtasakBezero();
+            // 3. Form1-eko interfazea eguneratu atasa berria erakusteko
+            if (formulario1 != null && !formulario1.IsDisposed)
+            {
+                formulario1.showAtasak();
+                formulario1.validateLanaldia();
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // 2. Atasa berria sortu eta bezeroaren zerrendan sartu
+            Atasa atasaBerria = new Atasa("Izarak", langilea: "", eginda: false);
+            bezeroHautatua.Atasak.Add(atasaBerria);
+            showAtasakBezero();
+            // 3. Form1-eko interfazea eguneratu atasa berria erakusteko
+            if (formulario1 != null && !formulario1.IsDisposed)
+            {
+                formulario1.showAtasak();
+                formulario1.validateLanaldia();
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // 2. Atasa berria sortu eta bezeroaren zerrendan sartu
+            Atasa atasaBerria = new Atasa("Zaborra", langilea: "", eginda: false);
+            bezeroHautatua.Atasak.Add(atasaBerria);
+            showAtasakBezero();
+            // 3. Form1-eko interfazea eguneratu atasa berria erakusteko
+            if (formulario1 != null && !formulario1.IsDisposed)
+            {
+                formulario1.showAtasak();
+                formulario1.validateLanaldia();
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // 2. Atasa berria sortu eta bezeroaren zerrendan sartu
+            Atasa atasaBerria = new Atasa("Jatetxea", langilea: "", eginda: false);
+            bezeroHautatua.Atasak.Add(atasaBerria);
+            showAtasakBezero();
+            // 3. Form1-eko interfazea eguneratu atasa berria erakusteko
+            if (formulario1 != null && !formulario1.IsDisposed)
+            {
+                formulario1.showAtasak();
+                formulario1.validateLanaldia();
+            }
+
         }
     }
 }
+
