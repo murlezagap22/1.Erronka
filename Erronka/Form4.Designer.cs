@@ -44,7 +44,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(61, 68);
+            label1.Location = new Point(61, 103);
             label1.Name = "label1";
             label1.Size = new Size(31, 28);
             label1.TabIndex = 0;
@@ -62,11 +62,12 @@
             // 
             // comboBox1
             // 
+            comboBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Denda", "Autokarabana", "Bungalow" });
             comboBox1.Location = new Point(61, 242);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(384, 23);
+            comboBox1.Size = new Size(664, 38);
             comboBox1.TabIndex = 2;
             // 
             // label3
@@ -75,17 +76,18 @@
             label3.Font = new Font("Segoe UI", 15F);
             label3.Location = new Point(61, 211);
             label3.Name = "label3";
-            label3.Size = new Size(202, 28);
+            label3.Size = new Size(125, 28);
             label3.TabIndex = 3;
-            label3.Text = "Aukeratu ostatu mota";
+            label3.Text = "Ostatu mota:";
             label3.Click += label3_Click;
             // 
             // button1
             // 
             button1.BackColor = Color.Red;
-            button1.Location = new Point(45, 326);
+            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(179, 326);
             button1.Name = "button1";
-            button1.Size = new Size(304, 78);
+            button1.Size = new Size(156, 78);
             button1.TabIndex = 4;
             button1.Text = "Ezeztatu\r\n";
             button1.UseVisualStyleBackColor = false;
@@ -94,12 +96,14 @@
             // button2
             // 
             button2.BackColor = Color.Lime;
-            button2.Location = new Point(419, 326);
+            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Location = new Point(497, 326);
             button2.Name = "button2";
-            button2.Size = new Size(306, 78);
+            button2.Size = new Size(148, 78);
             button2.TabIndex = 5;
             button2.Text = "Gorde";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // label4
             // 
@@ -114,16 +118,19 @@
             // 
             // textBox1
             // 
+            textBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.Location = new Point(61, 170);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(325, 23);
+            textBox1.Size = new Size(664, 35);
             textBox1.TabIndex = 7;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(61, 99);
+            textBox2.Enabled = false;
+            textBox2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(120, 99);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(325, 23);
+            textBox2.Size = new Size(147, 35);
             textBox2.TabIndex = 8;
             // 
             // label5

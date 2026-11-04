@@ -200,34 +200,60 @@ namespace Erronka
             string nombre = botoia.Text;
 
             // Formulario berria definitu
-            Form2 formulario = new Form2(id, nombre);
+            Form2 formulario = new Form2(this, id, nombre, mezuak);
             formulario.Show();
         }
 
         // Bezeroak aldatzeko botoia
         private void BezeroaAldatu(object sender, EventArgs e)
         {
-            // Erantzuna definitu gero baldintza sortzeko
             DialogResult erantzuna = MessageBox.Show(
-            "Bezeroa aldatu nahi duzu?",
-            "Baieztapena",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
+                "Bezeroa aldatu nahi duzu?",
+                "Baieztapena",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
             );
 
-            // Erantzuna EZ bada, hurrengo pausura ez da pasatuko
-            if (erantzuna == DialogResult.No)
+            if (erantzuna != DialogResult.Yes)
             {
                 return;
             }
 
             Button botoia = (Button)sender;
 
-            botoia.BackColor = Color.AliceBlue;
+            string id = botoia.Tag.ToString();
 
-            Form4 formulario = new Form4();
-            formulario.Show();
+            // Bezeroaren datuak bilatu
+            for (int i = 0; i < bezeroak.GetLength(0); i++)
+            {
+                if (bezeroak[i, 0] == id)
+                {
+                    string izena = bezeroak[i, 1];
+                    string ostatuMota = bezeroak[i, 2];
 
+                    Form4 formulario = new Form4(this, id, izena, ostatuMota);
+                    formulario.Show();
+
+                    break;
+                }
+            }
+        }
+
+        public void BezeroaEguneratu(string id, string izena, string ostatuMota)
+        {
+            for (int i = 0; i < bezeroak.GetLength(0); i++)
+            {
+                if (bezeroak[i, 0] == id)
+                {
+                    bezeroak[i, 1] = izena;
+                    bezeroak[i, 2] = ostatuMota;
+
+                    break;
+                }
+            }
+
+            // Botoiak berriro sortu
+            BezeroakErakutsi();
         }
 
         // Mezua
@@ -271,6 +297,30 @@ namespace Erronka
             textBoxMensaje.Clear();
         }
 
+        public string[,] MezuaGehitu(string[,] mezuak, string bezero, string text)
+        {
+            int filas = mezuak.GetLength(0);
+
+            string[,] newMezuak = new string[filas + 1, 4];
+
+            for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    newMezuak[i, j] = mezuak[i, j];
+                }
+            }
+
+            newMezuak[filas, 0] = bezero;
+            newMezuak[filas, 1] = text;
+            newMezuak[filas, 2] = "0";
+            newMezuak[filas, 3] = "0";
+
+            this.mezuak = newMezuak;
+
+            return newMezuak;
+        }
+
         // Mezuak array berrira sartzeko
         private void showMezuak()
         {
@@ -286,7 +336,7 @@ namespace Erronka
 
                 Panel panelMezuak = new Panel();
 
-                panelMezuak.Width = flowLayoutPanel2.ClientSize.Width - 25;
+                panelMezuak.Width = flowLayoutPanel2.ClientSize.Width - 8;
                 panelMezuak.Height = 75;
                 panelMezuak.BorderStyle = BorderStyle.FixedSingle;
 
