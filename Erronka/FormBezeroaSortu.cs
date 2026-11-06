@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace Erronka
 {
-    public partial class Form3 : Form
+    public partial class FormBezeroaSortu : Form
     {
         // Form1 eko erreferntzia hasi honetako funtzioak eta aldagaiak erabili ahal izateko
-        private Form1 formulario1;
+        private FormPrintzipala formulario1;
 
-        public Form3(Form1 form)
+        public FormBezeroaSortu(FormPrintzipala form)
         {
             InitializeComponent();
 

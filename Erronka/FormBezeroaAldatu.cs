@@ -9,12 +9,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Erronka
 {
-    public partial class Form4 : Form
+    public partial class FormBezeroaAldatu : Form
     {
-        private Form1 formulario1;
+        private FormPrintzipala formulario1;
         private string bezeroId;
 
-        public Form4(Form1 form, string id, string izena, string ostatuMota)
+        public FormBezeroaAldatu(FormPrintzipala form, string id, string izena, string ostatuMota)
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace Erronka
 {
-    partial class Form2
+    partial class FormBezeroa
     {
         /// <summary>
         /// Required designer variable.

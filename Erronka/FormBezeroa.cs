@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace Erronka
 {
-    public partial class Form2 : Form
+    public partial class FormBezeroa : Form
     {
-        private Form1 formulario1;
+        private FormPrintzipala formulario1;
         private Bezeroa bezeroHautatua;
 
-        public Form2(Form1 form, Bezeroa bezeroa)
+        public FormBezeroa(FormPrintzipala form, Bezeroa bezeroa)
         {
             InitializeComponent();
 
