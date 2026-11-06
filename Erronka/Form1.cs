@@ -5,7 +5,7 @@ namespace Erronka
 {
     public partial class Form1 : Form
     {
-
+        // Bezeroen array-a
         private string[,] bezeroak =
         {
             { "1", "Jon", "2" },
@@ -19,7 +19,8 @@ namespace Erronka
             { "9", "asdasdasd", "2" }
         };
 
-        private List<Bezeroa> CargarBezeroak()
+        // Berekoak dituen array-a objetuetan bihurtzeko funtzioa
+        private List<Bezeroa> bezeroakKargatu()
         {
             List<Bezeroa> lista = new List<Bezeroa>();
 
@@ -38,6 +39,7 @@ namespace Erronka
         // Definitu mezuak arraya 
         private string[,] mezuak = { };
 
+        // Egitekoen array-a
         private string[,] egitekoak =
         {
             { "Jon", "Eskuoihalak" },
@@ -46,28 +48,28 @@ namespace Erronka
             { "Iker", "Jatetxea" }
         };
 
-        private List<TextBox> inputsLangileak = new List<TextBox>();
-        private List<Label> labelsEginda = new List<Label>();
-        private List<Panel> panelesTareas = new List<Panel>();
-
+        // Lanaldia kudeatzeko aldagaia
         private bool lanaldia = false;
 
         private Color coloreOriginala;
-
+        // Bigarren formularioaren istantzia gordetzeko aldagaia
         private Form2 formulario2;
 
+        // Bezeroak gordeko dituen lista bezeroak gehitu ahal izateko.
         private List<Bezeroa> bezeroakLista;
 
         public Form1()
         {
             InitializeComponent();
 
-            bezeroakLista = CargarBezeroak();
+            bezeroakLista = bezeroakKargatu();
 
+            // Hasierako egoerak gorde
             btnHasiLanaldia.Visible = false;
 
             coloreOriginala = btnHasiLanaldia.BackColor;
 
+            // Langileak
             string[] workers =
             {
                 "Ane",
@@ -77,10 +79,8 @@ namespace Erronka
             // Sortu bezero desberdinak eta hauen botoiak
             BezeroakErakutsi();
 
-            showAtasak();
-
+            // Comboboxean sartu bezeroak
             chargueBezeroak();
-            showMezuak();
 
             // Langileen panela
             for (int i = 0; i < workers.GetLength(0); i++)
@@ -91,11 +91,11 @@ namespace Erronka
                 panelWorkers.Height = 75;
                 panelWorkers.BorderStyle = BorderStyle.FixedSingle;
 
-                Label labelTarea = new Label();
-                labelTarea.Text = workers[i];
-                labelTarea.Location = new Point(10, 10);
-                labelTarea.AutoSize = true;
-                labelTarea.Font = new Font(labelTarea.Font, FontStyle.Bold);
+                Label labelAtasa = new Label();
+                labelAtasa.Text = workers[i];
+                labelAtasa.Location = new Point(10, 10);
+                labelAtasa.AutoSize = true;
+                labelAtasa.Font = new Font(labelAtasa.Font, FontStyle.Bold);
 
                 CheckBox checkWorker = new CheckBox();
                 checkWorker.Text = "Barruan";
@@ -108,7 +108,7 @@ namespace Erronka
                 // Funtzioa check a aldatzerakoan
                 checkWorker.CheckedChanged += CheckWorker_CheckedChanged;
 
-                panelWorkers.Controls.Add(labelTarea);
+                panelWorkers.Controls.Add(labelAtasa);
                 panelWorkers.Controls.Add(checkWorker);
 
                 flowLayoutPanelWorkers.Controls.Add(panelWorkers);
@@ -125,7 +125,7 @@ namespace Erronka
                 // 2. Bezero bakoitzaren Atasak zerrenda zeharkatu
                 foreach (Atasa atasa in bezeroa.Atasak)
                 {
-                    Panel panelTarea = new Panel
+                    Panel panelAtasa = new Panel
                     {
                         Width = flowLayoutPanelTasks.ClientSize.Width - 8,
                         Height = 75,
@@ -134,7 +134,7 @@ namespace Erronka
                     };
 
                     // Honen testua definitu
-                    Label labelTarea = new Label
+                    Label labelAtasa = new Label
                     {
                         Text = atasa.Testua,
                         Location = new Point(10, 10),
@@ -178,13 +178,13 @@ namespace Erronka
                     };
 
                     // Kontrolak panelean sartu
-                    panelTarea.Controls.Add(labelTarea);
-                    panelTarea.Controls.Add(labelBezeroa);
-                    panelTarea.Controls.Add(labelLangilea);
-                    panelTarea.Controls.Add(inputLangile);
-                    panelTarea.Controls.Add(labelEginda);
+                    panelAtasa.Controls.Add(labelAtasa);
+                    panelAtasa.Controls.Add(labelBezeroa);
+                    panelAtasa.Controls.Add(labelLangilea);
+                    panelAtasa.Controls.Add(inputLangile);
+                    panelAtasa.Controls.Add(labelEginda);
 
-                    flowLayoutPanelTasks.Controls.Add(panelTarea);
+                    flowLayoutPanelTasks.Controls.Add(panelAtasa);
                 }
             }
         }
@@ -212,23 +212,23 @@ namespace Erronka
                 botoia.Location = new Point(0, 0);
 
                 // Editatzeko botoia
-                Button editatuBotoia = new Button();
-                editatuBotoia.Text = "✏️";
-                editatuBotoia.Width = 50;
-                editatuBotoia.Height = 60;
-                editatuBotoia.Tag = b; // Hemen ere objetu osoa gordetzen dugu
-                editatuBotoia.Click += BezeroaAldatu;
-                editatuBotoia.Location = new Point(120, 0);
+                Button aldatzekoBotoia = new Button();
+                aldatzekoBotoia.Text = "✏️";
+                aldatzekoBotoia.Width = 50;
+                aldatzekoBotoia.Height = 60;
+                aldatzekoBotoia.Tag = b; // Hemen ere objetu osoa gordetzen dugu
+                aldatzekoBotoia.Click += BezeroaAldatu;
+                aldatzekoBotoia.Location = new Point(120, 0);
 
                 // Kontrolak panelean sartu
                 panel.Controls.Add(botoia);
-                panel.Controls.Add(editatuBotoia);
+                panel.Controls.Add(aldatzekoBotoia);
 
                 flowLayoutPanelBotoiak.Controls.Add(panel);
             }
         }
 
-        // Bezeroa clickatzerakoan egingo duen funtzioa beste Formulario bat irekitzen
+        // Bezeroa click-atzerakoan egingo duen funtzioa beste Formulario bat irekitzen
         private void BezeroaKlikatu(object sender, EventArgs e)
         {
             // Erreferentzia clickatutako botoiari
@@ -354,7 +354,7 @@ namespace Erronka
                         BackColor = mezua.Osatuta ? Color.LightGreen : Color.White
                     };
 
-                    Label labelTarea = new Label
+                    Label labelAtasa = new Label
                     {
                         Text = mezua.Testua,
                         Location = new Point(10, 10),
@@ -369,12 +369,12 @@ namespace Erronka
                         AutoSize = true
                     };
 
-                    panelMezuak.Controls.Add(labelTarea);
+                    panelMezuak.Controls.Add(labelAtasa);
                     panelMezuak.Controls.Add(labelBezeroa);
 
                     // Indizearen ordez, mezua eta bezeroa objektuak bidaltzen dizkiogu kudeatzaileari
                     panelMezuak.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
-                    labelTarea.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
+                    labelAtasa.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
                     labelBezeroa.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
 
                     flowLayoutPanel2.Controls.Add(panelMezuak);
