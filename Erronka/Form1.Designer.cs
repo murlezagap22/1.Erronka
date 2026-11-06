@@ -38,7 +38,7 @@
             panel2 = new Panel();
             flowLayoutPanelTasks = new FlowLayoutPanel();
             panel3 = new Panel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            flowLayoutPanelMezuak = new FlowLayoutPanel();
             gameButton = new Button();
             panel4 = new Panel();
             btnHasiLanaldia = new Button();
@@ -127,19 +127,19 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ControlLight;
-            panel3.Controls.Add(flowLayoutPanel2);
+            panel3.Controls.Add(flowLayoutPanelMezuak);
             panel3.Location = new Point(632, 233);
             panel3.Name = "panel3";
             panel3.Size = new Size(728, 570);
             panel3.TabIndex = 7;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelMezuak
             // 
-            flowLayoutPanel2.BackColor = SystemColors.ControlLightLight;
-            flowLayoutPanel2.Location = new Point(27, 23);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(679, 518);
-            flowLayoutPanel2.TabIndex = 0;
+            flowLayoutPanelMezuak.BackColor = SystemColors.ControlLightLight;
+            flowLayoutPanelMezuak.Location = new Point(27, 23);
+            flowLayoutPanelMezuak.Name = "flowLayoutPanelMezuak";
+            flowLayoutPanelMezuak.Size = new Size(679, 518);
+            flowLayoutPanelMezuak.TabIndex = 0;
             // 
             // gameButton
             // 
@@ -239,7 +239,7 @@
         private Panel panel2;
         private Panel panel3;
         private FlowLayoutPanel flowLayoutPanelTasks;
-        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanelMezuak;
         private Button gameButton;
         private Panel panel4;
         private FlowLayoutPanel flowLayoutPanelWorkers;

@@ -304,42 +304,42 @@ namespace Erronka
                 return;
             }
 
-            // 1. Balioztatzea: Egiaztatu bezeroren bat hautatuta dagoen ComboBox-ean
+            // Egiaztatu bezeroren bat hautatuta dagoen ComboBox-ean
             if (comboBoxBezeroak.SelectedIndex == -1)
             {
                 MessageBox.Show("Hautatu bezero bat zerrendatik");
                 return;
             }
 
-            // 2. Hautatutako Bezeroa objetua lortu posizioaren (índice) bidez
+            // Hautatutako Bezeroa objetua lortu posizioaren (índice) bidez
             Bezeroa bezeroHautatua = bezeroakLista[comboBoxBezeroak.SelectedIndex];
 
-            // 3. Mezu berria objetu gisa sortu eta bezeroaren zerrendara gehitu
-            Mezua mezuaBerria = new Mezua(text, osatuta: false, ezabatuta: false);
-            bezeroHautatua.Mezuak.Add(mezuaBerria);
+            // Mezu berria objetu gisa sortu eta bezeroaren zerrendara gehitu
+            Mezua mezuBerria = new Mezua(text, osatuta: false, ezabatuta: false);
+            bezeroHautatua.Mezuak.Add(mezuBerria);
 
-            // 4. Formulario nagusiko bista eguneratu (badaude mezuak erakusteko kontrolak)
+            // Formulario nagusiko bista eguneratu (badaude mezuak erakusteko kontrolak)
             showMezuak();
 
-            // 5. Form2 zabalik badago, hautatutako bezero horren mezuak pasatu berriro kargatzeko
+            // Form2 zabalik badago, hautatutako bezero horren mezuak pasatu berriro kargatzeko
             if (formulario2 != null && !formulario2.IsDisposed)
             {
                 formulario2.ErakutsiMezuak(bezeroHautatua.Mezuak);
             }
 
-            // 6. Testu-kustila garbitu
+            // Testu-kustila garbitu
             textBoxMensaje.Clear();
         }
 
         // Mezuak array berrira sartzeko
         public void showMezuak()
         {
-            flowLayoutPanel2.Controls.Clear();
+            flowLayoutPanelMezuak.Controls.Clear();
 
-            // 1. Bezero guztien zerrenda zeharkatu
+            // Bezero guztien zerrenda zeharkatu
             foreach (Bezeroa bezeroa in bezeroakLista)
             {
-                // 2. Bezero bakoitzaren mezuak zeharkatu
+                // Bezero bakoitzaren mezuak zeharkatu
                 foreach (Mezua mezua in bezeroa.Mezuak)
                 {
                     // Ezabatuta dauden mezuak kendu
@@ -348,7 +348,7 @@ namespace Erronka
 
                     Panel panelMezuak = new Panel
                     {
-                        Width = flowLayoutPanel2.ClientSize.Width - 25, // Margen para la barra de desplazamiento
+                        Width = flowLayoutPanelMezuak.ClientSize.Width - 25,
                         Height = 75,
                         BorderStyle = BorderStyle.FixedSingle,
                         BackColor = mezua.Osatuta ? Color.LightGreen : Color.White
@@ -364,7 +364,7 @@ namespace Erronka
 
                     Label labelBezeroa = new Label
                     {
-                        Text = "Bezero: " + bezeroa.Izena, // Bezeroaren izena objektutik directoki
+                        Text = "Bezero: " + bezeroa.Izena,
                         Location = new Point(10, 45),
                         AutoSize = true
                     };
@@ -377,7 +377,7 @@ namespace Erronka
                     labelAtasa.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
                     labelBezeroa.Click += (s, e) => mezuaKudeatu(mezua, bezeroa);
 
-                    flowLayoutPanel2.Controls.Add(panelMezuak);
+                    flowLayoutPanelMezuak.Controls.Add(panelMezuak);
                 }
             }
         }
@@ -401,11 +401,11 @@ namespace Erronka
         // Mezuak irakurrita edo ezabatuta daudela jakiteko eta aldatzeko
         private void mezuaKudeatu(Mezua mezua, Bezeroa bezeroa)
         {
-            // 1. Ezabatuta dagoenean ezer ez egin
+            // Ezabatuta dagoenean ezer ez egin
             if (mezua.EzabatutaAdmin)
                 return;
 
-            // 2. Ez badago irakurrita / osatuta, irakurrita gisa jarri
+            // Ez badago irakurrita / osatuta, irakurrita gisa jarri
             if (!mezua.Osatuta)
             {
                 mezua.Osatuta = true;
@@ -419,7 +419,7 @@ namespace Erronka
             }
             else
             {
-                // 3. Irakurrita badago, ezabatzeko baieztapena erakutsi
+                // Irakurrita badago, ezabatzeko baieztapena erakutsi
                 DialogResult resultado = MessageBox.Show(
                     "¿Mezua ezabatu nahi duzu?\n\n" + mezua.Testua,
                     "Mezua ezabatu",
@@ -480,6 +480,7 @@ namespace Erronka
             btnHasiLanaldia.Visible = workersIn;
         }
 
+        // Langileak lortzeko funrzioa, jakiteko zeintzuk dauden hautatuta lan
         private List<string> LangileakLortu()
         {
             List<string> langileakBarruan = new List<string>();
@@ -490,11 +491,11 @@ namespace Erronka
 
                 if (checkBox != null && checkBox.Checked)
                 {
-                    string nombre = checkBox.Tag as string;
+                    string izena = checkBox.Tag as string;
 
-                    if (nombre != null)
+                    if (izena != null)
                     {
-                        langileakBarruan.Add(nombre);
+                        langileakBarruan.Add(izena);
                     }
                 }
             }
@@ -509,6 +510,7 @@ namespace Erronka
             formulario.Show();
         }
 
+        // Lana momentuan darabilen jakiteko funtzioa
         public void validateLanaldia()
         {
             if (lanaldia)
@@ -520,7 +522,7 @@ namespace Erronka
 
         private void btnHasiLanaldia_Click(object sender, EventArgs e)
         {
-            // 1. Validar primero si hay trabajadores seleccionados/disponibles
+            // Langileak lortu
             List<string> langileak = LangileakLortu();
 
             if (!lanaldia && langileak.Count == 0)
@@ -529,10 +531,10 @@ namespace Erronka
                 return;
             }
 
-            // 2. Cambiar el estado de la jornada
+            // Lanaldiaren egoera aldatu
             lanaldia = !lanaldia;
 
-            // 3. Estatus visual del botón
+            // Botoiaren aldaketa jakiteko lanaldia hasita badagoen ala ez
             if (lanaldia)
             {
                 btnHasiLanaldia.Text = "Bukatu lanaldia";
@@ -546,19 +548,19 @@ namespace Erronka
                 btnHasiLanaldia.ForeColor = Color.Black;
             }
 
-            // 4. Bloquear/desbloquear CheckBoxes según el estado de lanaldia
+            // Lanaldiaren egoera kontuan izanda, checkbox-ak desaktibatu edo aktibatu
             foreach (Panel panel in flowLayoutPanelWorkers.Controls)
             {
                 foreach (Control kontrola in panel.Controls)
                 {
                     if (kontrola is CheckBox checkWorker)
                     {
-                        checkWorker.Enabled = !lanaldia; // Si lanaldia es true -> Enabled = false
+                        checkWorker.Enabled = !lanaldia;
                     }
                 }
             }
 
-            // 5. Solo arrancar hilos si la jornada está ACTIVA
+            // Lanaldia aktibatuta bakarrik badago hasi harien (Thread) sorpena
             if (lanaldia)
             {
                 LanakProzesatu();
@@ -566,9 +568,10 @@ namespace Erronka
         }
 
 
+        // Lanak kudeatzeko funtzio printzipala
         private void LanakProzesatu()
         {
-            // 1. Bezero guztien atasa guztiak zerrenda bakarrean bildu (eginda ez daudenak bakarrik)
+            // Bezero guztien atasa guztiak zerrenda bakarrean bildu (eginda ez daudenak bakarrik)
             List<Atasa> atasaGuztiak = bezeroakLista
                 .SelectMany(b => b.Atasak)
                 .Where(a => !a.Eginda)
@@ -594,7 +597,7 @@ namespace Erronka
                         if (!lanaldia)
                             break;
 
-                        // Atomikoki hurrengo lanaren indizea lortu
+                        // Hurrengo lanaren indizea lortu, horrela egiten da hari desberdinak kudeatzerakoan arazoak ez izateko
                         int i = Interlocked.Increment(ref hurrengoLana);
 
                         // Lan gehiago ez badago, haria amaitu
@@ -637,7 +640,7 @@ namespace Erronka
             }
         }
 
-
+        // Atasak zenbat denbora tardatuko duten jakitzeko funtzioa
         private int DenboraLortu(string lana)
         {
             switch (lana)
@@ -685,7 +688,6 @@ namespace Erronka
             // Berriro bezeroak pintatu
             BezeroakErakutsi();
         }
-
 
     }
 }
