@@ -252,45 +252,40 @@ namespace Erronka
             );
 
             if (erantzuna != DialogResult.Yes)
-            {
                 return;
-            }
 
             Button botoia = (Button)sender;
 
-            string id = botoia.Tag.ToString();
+            Bezeroa bezero = (Bezeroa)botoia.Tag;
 
-            // Bezeroaren datuak bilatu
-            for (int i = 0; i < bezeroak.GetLength(0); i++)
-            {
-                if (bezeroak[i, 0] == id)
-                {
-                    string izena = bezeroak[i, 1];
-                    string ostatuMota = bezeroak[i, 2];
+            FormBezeroaAldatu formulario = new FormBezeroaAldatu(
+                this,
+                bezero.Id.ToString(),
+                bezero.Izena,
+                bezero.Mota.ToString()
+            );
 
-                    FormBezeroaAldatu formulario = new FormBezeroaAldatu(this, id, izena, ostatuMota);
-                    formulario.Show();
-
-                    break;
-                }
-            }
+            formulario.Show();
         }
 
         public void BezeroaEguneratu(string id, string izena, string ostatuMota)
         {
-            for (int i = 0; i < bezeroak.GetLength(0); i++)
+            int bezeroId = int.Parse(id);
+            int mota = int.Parse(ostatuMota);
+
+            foreach (Bezeroa bezero in bezeroakLista)
             {
-                if (bezeroak[i, 0] == id)
+                if (bezero.Id == bezeroId)
                 {
-                    bezeroak[i, 1] = izena;
-                    bezeroak[i, 2] = ostatuMota;
+                    bezero.Izena = izena;
+                    bezero.Mota = mota;
 
                     break;
                 }
             }
 
-            // Botoiak berriro sortu
             BezeroakErakutsi();
+            chargueBezeroak();
         }
 
         // Mezua
@@ -665,28 +660,15 @@ namespace Erronka
         // Bezeroa gehitzeko funtzioa
         public void BezeroaGehitu(string izena, string ostatuMota)
         {
-            // Array-aren zenbateko gero kopia bat egiteko bat gehiagorekin
-            int kopurua = bezeroak.GetLength(0);
+            int id = bezeroakLista.Count + 1;
+            int mota = int.Parse(ostatuMota);
 
-            string[,] berria = new string[kopurua + 1, 3];
+            Bezeroa bezeroBerria = new Bezeroa(id, izena, mota);
 
-            for (int i = 0; i < kopurua; i++)
-            {
-                berria[i, 0] = bezeroak[i, 0];
-                berria[i, 1] = bezeroak[i, 1];
-                berria[i, 2] = bezeroak[i, 2];
-            }
+            bezeroakLista.Add(bezeroBerria);
 
-            // Berria sartu array berrian azken lekuan
-            berria[kopurua, 0] = (kopurua + 1).ToString();
-            berria[kopurua, 1] = izena;
-            berria[kopurua, 2] = ostatuMota;
-
-            // Berdindu hasieran geneukan array-arekin
-            bezeroak = berria;
-
-            // Berriro bezeroak pintatu
             BezeroakErakutsi();
+            chargueBezeroak();
         }
 
     }

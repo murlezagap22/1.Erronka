@@ -11,13 +11,13 @@ namespace Erronka
     public partial class FormBezeroaSortu : Form
     {
         // Form1 eko erreferntzia hasi honetako funtzioak eta aldagaiak erabili ahal izateko
-        private FormPrintzipala formulario1;
+        private FormPrintzipala formPrintzipala;
 
         public FormBezeroaSortu(FormPrintzipala form)
         {
             InitializeComponent();
 
-            formulario1 = form;
+            formPrintzipala = form;
 
             // Ostatuen combobox-a datuekin bete
             string[,] ostatuak =
@@ -57,7 +57,7 @@ namespace Erronka
                 (comboBoxOstatuMota.SelectedIndex + 1).ToString();
 
             // Form1 eko funtzioa eta parametroak pasatu
-            formulario1.BezeroaGehitu(izena, ostatuMota);
+            formPrintzipala.BezeroaGehitu(izena, ostatuMota);
 
             this.Close();
         }

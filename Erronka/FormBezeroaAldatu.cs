@@ -21,12 +21,11 @@ namespace Erronka
             formulario1 = form;
             bezeroId = id;
 
-            // Bezeroaren datuak erakutsi
             textBox1.Text = izena;
             textBox2.Text = bezeroId;
             textBox2.ReadOnly = true;
-            comboBox1.SelectedIndex = int.Parse(ostatuMota) - 1;
 
+            comboBox1.SelectedIndex = int.Parse(ostatuMota) - 1;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
