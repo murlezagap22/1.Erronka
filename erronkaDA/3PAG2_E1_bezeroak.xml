@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rows>
+  <row num="1">
+    <id>1</id>
+    <izena>Maitane</izena>
+    <abizena>Perez Andueza</abizena>
+    <emaila>maitane.perez@email.com</emaila>
+    <telefonoa>600000001</telefonoa>
+    <ostatu_mota>denda</ostatu_mota>
+    <sortzeEguna>2026-01-10</sortzeEguna>
+  </row>
+  <row num="2">
+    <id>2</id>
+    <izena>Jon</izena>
+    <abizena>Martínez Urrutia</abizena>
+    <emaila>jon.martinez@email.com</emaila>
+    <telefonoa>600000002</telefonoa>
+    <ostatu_mota>autoka</ostatu_mota>
+    <sortzeEguna>2026-01-15</sortzeEguna>
+  </row>
+  <row num="3">
+    <id>3</id>
+    <izena>Intza</izena>
+    <abizena>Satrustegi Arrese</abizena>
+    <emaila>intza.satrustegi@email.com</emaila>
+    <telefonoa>600000003</telefonoa>
+    <ostatu_mota>bungalow</ostatu_mota>
+    <sortzeEguna>2026-02-01</sortzeEguna>
+  </row>
+  <row num="4">
+    <id>4</id>
+    <izena>Joseba</izena>
+    <abizena>Gómez Barrena</abizena>
+    <emaila>joseba.gomez@email.com</emaila>
+    <telefonoa>600000004</telefonoa>
+    <ostatu_mota>denda</ostatu_mota>
+    <sortzeEguna>2026-02-12</sortzeEguna>
+  </row>
+  <row num="5">
+    <id>5</id>
+    <izena>Nora</izena>
+    <abizena>Zubia Lizarraga</abizena>
+    <emaila>nora.zubia@email.com</emaila>
+    <telefonoa>600000005</telefonoa>
+    <ostatu_mota>autoka</ostatu_mota>
+    <sortzeEguna>2026-03-05</sortzeEguna>
+  </row>
+  <row num="6">
+    <id>6</id>
+    <izena>David</izena>
+    <abizena>Mendia Bilbao</abizena>
+    <emaila>david.mendia@email.com</emaila>
+    <telefonoa>600000006</telefonoa>
+    <ostatu_mota>bungalow</ostatu_mota>
+    <sortzeEguna>2026-03-18</sortzeEguna>
+  </row>
+  <row num="7">
+    <id>7</id>
+    <izena>Uxue</izena>
+    <abizena>Goikoetxea Lili</abizena>
+    <emaila>uxue.goikoetxea@email.com</emaila>
+    <telefonoa>600000007</telefonoa>
+    <ostatu_mota>denda</ostatu_mota>
+    <sortzeEguna>2026-04-02</sortzeEguna>
+  </row>
+  <row num="8">
+    <id>8</id>
+    <izena>Angela</izena>
+    <abizena>Aldatz Iturriondobeitia</abizena>
+    <emaila>angela.aldatz@email.com</emaila>
+    <telefonoa>600000008</telefonoa>
+    <ostatu_mota>autoka</ostatu_mota>
+    <sortzeEguna>2026-04-14</sortzeEguna>
+  </row>
+  <row num="9">
+    <id>9</id>
+    <izena>Iker</izena>
+    <abizena>Urkia Otxandiano</abizena>
+    <emaila>iker.urkia@email.com</emaila>
+    <telefonoa>600000009</telefonoa>
+    <ostatu_mota>bungalow</ostatu_mota>
+    <sortzeEguna>2026-05-01</sortzeEguna>
+  </row>
+  <row num="10">
+    <id>10</id>
+    <izena>Leire</izena>
+    <abizena>Eraso Urrutia</abizena>
+    <emaila>leire.eraso@email.com</emaila>
+    <telefonoa>600000010</telefonoa>
+    <ostatu_mota>denda</ostatu_mota>
+    <sortzeEguna>2026-05-20</sortzeEguna>
+  </row>
+  <row num="11">
+    <id>11</id>
+    <izena>Rubén</izena>
+    <abizena>Sánchez Satrustegi</abizena>
+    <emaila>ruben.sanchez@email.com</emaila>
+    <telefonoa>600000011</telefonoa>
+    <ostatu_mota>autoka</ostatu_mota>
+    <sortzeEguna>2026-06-03</sortzeEguna>
+  </row>
+  <row num="12">
+    <id>12</id>
+    <izena>María</izena>
+    <abizena>Fernández Merino</abizena>
+    <emaila>maria.fernandez@email.com</emaila>
+    <telefonoa>600000012</telefonoa>
+    <ostatu_mota>bungalow</ostatu_mota>
+    <sortzeEguna>2026-06-11</sortzeEguna>
+  </row>
+  <row num="13">
+    <id>13</id>
+    <izena>Javier</izena>
+    <abizena>López Astondoa</abizena>
+    <emaila>javier.lopez@email.com</emaila>
+    <telefonoa>600000013</telefonoa>
+    <ostatu_mota>denda</ostatu_mota>
+    <sortzeEguna>2026-07-01</sortzeEguna>
+  </row>
+  <row num="14">
+    <id>14</id>
+    <izena>Icíar</izena>
+    <abizena>Martín Lizarraga</abizena>
+    <emaila>iciar.martin@email.com</emaila>
+    <telefonoa>600000014</telefonoa>
+    <ostatu_mota>autoka</ostatu_mota>
+    <sortzeEguna>2026-07-19</sortzeEguna>
+  </row>
+  <row num="15">
+    <id>15</id>
+    <izena>Jonathan</izena>
+    <abizena>Gutiérrez Bilbao</abizena>
+    <emaila>jonathan.gutierrez@email.com</emaila>
+    <telefonoa>600000015</telefonoa>
+    <ostatu_mota>bungalow</ostatu_mota>
+    <sortzeEguna>2026-08-05</sortzeEguna>
+  </row>
+</rows>
