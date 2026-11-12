@@ -1,0 +1,1 @@
+xml.ruta = ./3PAG2_E1_bezeroak.xml
