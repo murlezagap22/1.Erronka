@@ -1,5 +1,8 @@
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Erronka
 {
@@ -62,7 +65,9 @@ namespace Erronka
         {
             InitializeComponent();
 
-            bezeroakLista = bezeroakKargatu();
+            bezeroakLista = BezeroakJarretikKargatu();
+
+            MessageBox.Show("Bezero kopurua: " + bezeroakLista.Count);
 
             // Hasierako egoerak gorde
             btnHasiLanaldia.Visible = false;
@@ -112,6 +117,78 @@ namespace Erronka
                 panelWorkers.Controls.Add(checkWorker);
 
                 flowLayoutPanelWorkers.Controls.Add(panelWorkers);
+            }
+        }
+
+        private List<Bezeroa> BezeroakJarretikKargatu()
+        {
+            ProcessStartInfo info = new ProcessStartInfo();
+
+            info.FileName = @"C:\Program Files\Eclipse Adoptium\jdk-25.0.5.8-hotspot\bin\java.exe";
+            info.Arguments = "-jar \"..\\..\\..\\..\\erronkaDA\\JavaApp.jar\"";
+
+            info.UseShellExecute = false;
+            info.RedirectStandardOutput = true;
+            info.RedirectStandardError = true;
+            info.CreateNoWindow = true;
+
+            // Carpeta donde están el JAR y konfigurazio.txt
+            info.WorkingDirectory = Application.StartupPath;
+
+            using (Process process = Process.Start(info))
+            {
+                string json = process.StandardOutput.ReadToEnd();
+                string errorea = process.StandardError.ReadToEnd();
+
+                MessageBox.Show("JSON recibido:\n" + json + "\nERROR:\n" + errorea);
+
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                {
+                    MessageBox.Show(errorea);
+                    return new List<Bezeroa>();
+                }
+
+                JsonDocument doc = JsonDocument.Parse(json);
+
+                List<Bezeroa> lista = new List<Bezeroa>();
+
+                foreach (JsonElement dato in doc.RootElement.EnumerateArray())
+                {
+                    int mota = 0;
+
+                    switch (dato.GetProperty("ostatuMota").GetString().ToLower())
+                    {
+                        case "denda":
+                            mota = 1;
+                            break;
+
+                        case "autoka":
+                            mota = 2;
+                            break;
+
+                        case "bungalow":
+                            mota = 3;
+                            break;
+                    }
+
+                    Bezeroa bezero = new Bezeroa(
+                        int.Parse(dato.GetProperty("id").GetString()),
+                        dato.GetProperty("izena").GetString(),
+                        mota
+                    );
+
+                    bezero.Abizena = dato.GetProperty("abizena").GetString();
+                    bezero.Emaila = dato.GetProperty("emaila").GetString();
+                    bezero.Telefonoa = dato.GetProperty("telefonoa").GetString();
+                    bezero.SortzeEguna = dato.GetProperty("sortzeEguna").GetString();
+
+                    lista.Add(bezero);
+                }
+
+                return lista;
+
             }
         }
 
@@ -262,7 +339,7 @@ namespace Erronka
                 this,
                 bezero.Id.ToString(),
                 bezero.Izena,
-                bezero.Mota.ToString()
+                bezero.OstatuMota.ToString()
             );
 
             formulario.Show();
@@ -278,7 +355,7 @@ namespace Erronka
                 if (bezero.Id == bezeroId)
                 {
                     bezero.Izena = izena;
-                    bezero.Mota = mota;
+                    bezero.OstatuMota = mota;
 
                     break;
                 }
