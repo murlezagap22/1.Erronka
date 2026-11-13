@@ -761,6 +761,71 @@ namespace Erronka
             catch (Exception ex)
             {
                 MessageBox.Show("Errorea gertatu da bideojokoa irekitzekoan: " + ex.Message);
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCSV_Click(object sender, EventArgs e)
+        {
+            BezeroakEsportatu(bezeroakLista, "csv");
+        }
+
+        private void buttonXML_Click(object sender, EventArgs e)
+        {
+            BezeroakEsportatu(bezeroakLista, "xml");
+        }
+
+        private void BezeroakEsportatu(List<Bezeroa> bezeroak, string formatua)
+        {
+            ProcessStartInfo info = new ProcessStartInfo();
+
+            info.FileName = @"C:\Program Files\Eclipse Adoptium\jdk-25.0.5.8-hotspot\bin\java.exe";
+
+            info.Arguments = "-jar \"..\\..\\..\\..\\erronkaDA\\JavaApp.jar\" " + formatua;
+
+            info.UseShellExecute = false;
+            info.RedirectStandardInput = true;
+            info.RedirectStandardOutput = true;
+            info.RedirectStandardError = true;
+            info.CreateNoWindow = true;
+            info.WorkingDirectory = Application.StartupPath;
+
+            // Preparamos los datos que Java necesita
+            var datos = bezeroak.Select(b => new
+            {
+                id = b.Id,
+                izena = b.Izena,
+                abizena = b.Abizena,
+                emaila = b.Emaila,
+                telefonoa = b.Telefonoa,
+                ostatuMota = b.OstatuMota,
+                sortzeEguna = b.SortzeEguna
+            });
+
+            string json = JsonSerializer.Serialize(datos);
+
+            using (Process process = Process.Start(info))
+            {
+                // Enviamos el JSON a Java
+                process.StandardInput.Write(json);
+
+                // Indicamos que hemos terminado de enviar los datos
+                process.StandardInput.Close();
+
+                string salida = process.StandardOutput.ReadToEnd();
+                string errorea = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                if (process.ExitCode == 0)
+                {
+                    MessageBox.Show("Esportazioa ondo egin da: " + formatua.ToUpper());
+                }
+                else
+                {
+                    MessageBox.Show("Errorea esportatzerakoan:\n" + errorea);
+                }
             }
         }
     }
