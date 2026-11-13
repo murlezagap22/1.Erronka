@@ -1,3 +1,4 @@
+using Erronka.modeloak;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -8,49 +9,6 @@ namespace Erronka
 {
     public partial class FormPrintzipala : Form
     {
-        // Bezeroen array-a
-        private string[,] bezeroak =
-        {
-            { "1", "Jon", "2" },
-            { "2", "Ane", "2" },
-            { "3", "Mikel", "2" },
-            { "4", "Iker", "2" },
-            { "5", "Nerea", "2" },
-            { "6", "Otro", "2" },
-            { "7", "YUUUU", "2" },
-            { "8", "SUUUUU", "2" },
-            { "9", "asdasdasd", "2" }
-        };
-
-        // Berekoak dituen array-a objetuetan bihurtzeko funtzioa
-        private List<Bezeroa> bezeroakKargatu()
-        {
-            List<Bezeroa> lista = new List<Bezeroa>();
-
-            for (int i = 0; i < bezeroak.GetLength(0); i++)
-            {
-                int id = int.Parse(bezeroak[i, 0]);
-                string izena = bezeroak[i, 1];
-                int mota = int.Parse(bezeroak[i, 2]);
-
-                lista.Add(new Bezeroa(id, izena, mota));
-            }
-
-            return lista;
-        }
-
-        // Definitu mezuak arraya 
-        private string[,] mezuak = { };
-
-        // Egitekoen array-a
-        private string[,] egitekoak =
-        {
-            { "Jon", "Eskuoihalak" },
-            { "Ane", "Izarak" },
-            { "Mikel", "Zaborra" },
-            { "Iker", "Jatetxea" }
-        };
-
         // Lanaldia kudeatzeko aldagaia
         private bool lanaldia = false;
 
@@ -65,13 +23,11 @@ namespace Erronka
         {
             InitializeComponent();
 
+            // Lortu bezeroak
             bezeroakLista = BezeroakJarretikKargatu();
-
-            MessageBox.Show("Bezero kopurua: " + bezeroakLista.Count);
 
             // Hasierako egoerak gorde
             btnHasiLanaldia.Visible = false;
-
             coloreOriginala = btnHasiLanaldia.BackColor;
 
             // Langileak
@@ -120,45 +76,56 @@ namespace Erronka
             }
         }
 
+        // Funtzioa Java aplikazioko .jar era deitzen duena eta bezeroen datuak lortu
         private List<Bezeroa> BezeroakJarretikKargatu()
         {
+            // Prozesu externoa hasi
             ProcessStartInfo info = new ProcessStartInfo();
 
+            // Java-ko ingurunea definitu
             info.FileName = @"C:\Program Files\Eclipse Adoptium\jdk-25.0.5.8-hotspot\bin\java.exe";
-            info.Arguments = "-jar \"..\\..\\..\\..\\erronkaDA\\JavaApp.jar\"";
 
+            // Java-ko aplikazioaren bidea
+            info.Arguments = "-jar \"..\\..\\..\\..\\erronkaDA\\JavaApp.jar\" importar";
+
+            // Beharrezko parametroak
+            // Shell ez erabiltzeko
             info.UseShellExecute = false;
+            // Java-ko aplikazioa bueltatuko duen datuak kontsolatik hartzeko
             info.RedirectStandardOutput = true;
+            // Kontsolako erroreak hartzeko
             info.RedirectStandardError = true;
+            // Kontsola pantaila bat ez sortzeko
             info.CreateNoWindow = true;
-
-            // Carpeta donde están el JAR y konfigurazio.txt
+            // Non egingo den prozesua definitu
             info.WorkingDirectory = Application.StartupPath;
 
             using (Process process = Process.Start(info))
             {
+                // Bueltatzen diren datuak gorde, edo erroreak
                 string json = process.StandardOutput.ReadToEnd();
                 string errorea = process.StandardError.ReadToEnd();
 
-                MessageBox.Show("JSON recibido:\n" + json + "\nERROR:\n" + errorea);
-
+                // Itxaron amaitu harte aplikazioa
                 process.WaitForExit();
 
                 if (process.ExitCode != 0)
                 {
-                    MessageBox.Show(errorea);
+                    MessageBox.Show("Errorea Java-n:\n" + errorea);
                     return new List<Bezeroa>();
                 }
 
+                // Json bihurtu dokumentu batean
                 JsonDocument doc = JsonDocument.Parse(json);
 
                 List<Bezeroa> lista = new List<Bezeroa>();
 
+                // Datuak irakurri eta gorde bezero
                 foreach (JsonElement dato in doc.RootElement.EnumerateArray())
                 {
                     int mota = 0;
 
-                    switch (dato.GetProperty("ostatuMota").GetString().ToLower())
+                    switch (dato.GetProperty("ostatuMota").GetString()?.ToLower())
                     {
                         case "denda":
                             mota = 1;
@@ -176,30 +143,29 @@ namespace Erronka
                     Bezeroa bezero = new Bezeroa(
                         int.Parse(dato.GetProperty("id").GetString()),
                         dato.GetProperty("izena").GetString(),
-                        mota
+                        mota,
+                        dato.GetProperty("abizena").GetString(),
+                        dato.GetProperty("emaila").GetString(),
+                        dato.GetProperty("telefonoa").GetString(),
+                        dato.GetProperty("sortzeEguna").GetString()
                     );
-
-                    bezero.Abizena = dato.GetProperty("abizena").GetString();
-                    bezero.Emaila = dato.GetProperty("emaila").GetString();
-                    bezero.Telefonoa = dato.GetProperty("telefonoa").GetString();
-                    bezero.SortzeEguna = dato.GetProperty("sortzeEguna").GetString();
 
                     lista.Add(bezero);
                 }
 
                 return lista;
-
             }
         }
 
+        // Atasak erakusteko funtzioa
         public void showAtasak()
         {
             flowLayoutPanelTasks.Controls.Clear();
 
-            // 1. Bezero guztiak zeharkatu
+            // Bezero guztiak zeharkatu
             foreach (Bezeroa bezeroa in bezeroakLista)
             {
-                // 2. Bezero bakoitzaren Atasak zerrenda zeharkatu
+                // Bezero bakoitzaren Atasak zerrenda zeharkatu
                 foreach (Atasa atasa in bezeroa.Atasak)
                 {
                     Panel panelAtasa = new Panel
@@ -266,12 +232,13 @@ namespace Erronka
             }
         }
 
+        // Formularioan dauzkagun bezero desberdinak botoi moduan atera
         private void BezeroakErakutsi()
         {
             // Aurreko botoiak ezabatu
             flowLayoutPanelBotoiak.Controls.Clear();
 
-            // bezeroak.GetLength(0)-ren ordez List<Bezeroa> zeharkatuko dugu
+            // Bezeroen list zeharkatuko dugu
             foreach (Bezeroa b in bezeroakLista)
             {
                 // Panelaren baloreak definitu
@@ -284,7 +251,7 @@ namespace Erronka
                 botoia.Text = b.Izena; // Objetuaren izena
                 botoia.Width = 120;
                 botoia.Height = 60;
-                botoia.Tag = b; // ID bakarrik gorde ordez, objetu osoa gordetzen dugu!
+                botoia.Tag = b; // objetu osoa gorde
                 botoia.Click += BezeroaKlikatu;
                 botoia.Location = new Point(0, 0);
 
@@ -293,7 +260,7 @@ namespace Erronka
                 aldatzekoBotoia.Text = "✏️";
                 aldatzekoBotoia.Width = 50;
                 aldatzekoBotoia.Height = 60;
-                aldatzekoBotoia.Tag = b; // Hemen ere objetu osoa gordetzen dugu
+                aldatzekoBotoia.Tag = b;
                 aldatzekoBotoia.Click += BezeroaAldatu;
                 aldatzekoBotoia.Location = new Point(120, 0);
 
@@ -335,6 +302,7 @@ namespace Erronka
 
             Bezeroa bezero = (Bezeroa)botoia.Tag;
 
+            // Form berria hasi hautatutako bezeroarekin
             FormBezeroaAldatu formulario = new FormBezeroaAldatu(
                 this,
                 bezero.Id.ToString(),
@@ -342,9 +310,11 @@ namespace Erronka
                 bezero.OstatuMota.ToString()
             );
 
+            // Ireki form
             formulario.Show();
         }
 
+        // Bezeroa datu berriekin aldatu gure list-an
         public void BezeroaEguneratu(string id, string izena, string ostatuMota)
         {
             int bezeroId = int.Parse(id);
@@ -361,6 +331,7 @@ namespace Erronka
                 }
             }
 
+            // Datuak berriro erakutsi
             BezeroakErakutsi();
             chargueBezeroak();
         }
@@ -575,7 +546,7 @@ namespace Erronka
             return langileakBarruan;
         }
 
-
+        // Bezero berri bat sortzeko formularioa hasi
         private void AddClient_Click(object sender, EventArgs e)
         {
             FormBezeroaSortu formulario = new FormBezeroaSortu(this);
@@ -591,7 +562,7 @@ namespace Erronka
             }
         }
 
-
+        // Lanaldia hasteko funtzioa
         private void btnHasiLanaldia_Click(object sender, EventArgs e)
         {
             // Langileak lortu
@@ -740,13 +711,15 @@ namespace Erronka
             int id = bezeroakLista.Count + 1;
             int mota = int.Parse(ostatuMota);
 
-            Bezeroa bezeroBerria = new Bezeroa(id, izena, mota);
+            Bezeroa bezeroBerria = new Bezeroa(id, izena, mota, "", "proba@gmail.com", "000000000", "26-10-2026");
 
             bezeroakLista.Add(bezeroBerria);
 
             BezeroakErakutsi();
             chargueBezeroak();
         }
+
+        // Funtzioa jokoa hasteko unity-rekin
 
         private void gameButton_Click(object sender, EventArgs e)
         {
@@ -761,21 +734,26 @@ namespace Erronka
             catch (Exception ex)
             {
                 MessageBox.Show("Errorea gertatu da bideojokoa irekitzekoan: " + ex.Message);
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
+        // CSV moduan exportatzeko
         private void buttonCSV_Click(object sender, EventArgs e)
         {
             BezeroakEsportatu(bezeroakLista, "csv");
         }
 
+        // XML moduan exportazteko
         private void buttonXML_Click(object sender, EventArgs e)
         {
             BezeroakEsportatu(bezeroakLista, "xml");
         }
 
+        // Bezeroak esportatzeko funtzioa
         private void BezeroakEsportatu(List<Bezeroa> bezeroak, string formatua)
         {
             ProcessStartInfo info = new ProcessStartInfo();
@@ -791,15 +769,23 @@ namespace Erronka
             info.CreateNoWindow = true;
             info.WorkingDirectory = Application.StartupPath;
 
-            // Preparamos los datos que Java necesita
+            // Datuak prestatu Java aplikaziora bidaltzeko
             var datos = bezeroak.Select(b => new
             {
-                id = b.Id,
+                id = b.Id.ToString(),
                 izena = b.Izena,
                 abizena = b.Abizena,
                 emaila = b.Emaila,
                 telefonoa = b.Telefonoa,
-                ostatuMota = b.OstatuMota,
+
+                ostatuMota = b.OstatuMota switch
+                {
+                    1 => "denda",
+                    2 => "autoka",
+                    3 => "bungalow",
+                    _ => ""
+                },
+
                 sortzeEguna = b.SortzeEguna
             });
 
@@ -807,10 +793,8 @@ namespace Erronka
 
             using (Process process = Process.Start(info))
             {
-                // Enviamos el JSON a Java
+                // Json-a bidali
                 process.StandardInput.Write(json);
-
-                // Indicamos que hemos terminado de enviar los datos
                 process.StandardInput.Close();
 
                 string salida = process.StandardOutput.ReadToEnd();
@@ -818,6 +802,7 @@ namespace Erronka
 
                 process.WaitForExit();
 
+                // Kudeatu erantzuna
                 if (process.ExitCode == 0)
                 {
                     MessageBox.Show("Esportazioa ondo egin da: " + formatua.ToUpper());

@@ -41,6 +41,7 @@ namespace Erronka
             this.Close();
         }
 
+        // Bezeroa gehitzeko botoiaren funtzioa
         private void acceptButton_Click(object sender, EventArgs e)
         {
             // Bezero berriaren datuak hartu eta Form1-eko funtziora bidali honek gehitu ahal izateko

@@ -71,6 +71,7 @@ namespace Erronka
 
         }
 
+        // Botoiaren funtzioa eta datuak ditugun funtziora bidali bezeroa aldatzeko
         private void button2_Click_1(object sender, EventArgs e)
         {
             string izena = textBox1.Text.Trim();

@@ -32,12 +32,12 @@
             panel1 = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            buttonCheck = new Button();
+            buttonJatetxea = new Button();
+            buttonZaborra = new Button();
+            buttonIzarak = new Button();
+            buttonEskuoihalak = new Button();
+            buttonMezua = new Button();
             textBox1 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -57,12 +57,12 @@
             panel1.BackColor = SystemColors.AppWorkspace;
             panel1.Controls.Add(flowLayoutPanel2);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(buttonCheck);
+            panel1.Controls.Add(buttonJatetxea);
+            panel1.Controls.Add(buttonZaborra);
+            panel1.Controls.Add(buttonIzarak);
+            panel1.Controls.Add(buttonEskuoihalak);
+            panel1.Controls.Add(buttonMezua);
             panel1.Controls.Add(textBox1);
             panel1.Location = new Point(-2, 49);
             panel1.Name = "panel1";
@@ -85,71 +85,72 @@
             flowLayoutPanel1.Size = new Size(705, 400);
             flowLayoutPanel1.TabIndex = 7;
             // 
-            // button6
+            // buttonCheck
             // 
-            button6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(1184, 93);
-            button6.Name = "button6";
-            button6.Size = new Size(224, 90);
-            button6.TabIndex = 6;
-            button6.Text = "Check-out";
-            button6.UseVisualStyleBackColor = true;
+            buttonCheck.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCheck.Location = new Point(1184, 93);
+            buttonCheck.Name = "buttonCheck";
+            buttonCheck.Size = new Size(224, 90);
+            buttonCheck.TabIndex = 6;
+            buttonCheck.Text = "Check-out";
+            buttonCheck.UseVisualStyleBackColor = true;
+            buttonCheck.Click += button6_Click;
             // 
-            // button5
+            // buttonJatetxea
             // 
-            button5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(894, 93);
-            button5.Name = "button5";
-            button5.Size = new Size(217, 90);
-            button5.TabIndex = 5;
-            button5.Text = "Jatetxea";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            buttonJatetxea.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonJatetxea.Location = new Point(894, 93);
+            buttonJatetxea.Name = "buttonJatetxea";
+            buttonJatetxea.Size = new Size(217, 90);
+            buttonJatetxea.TabIndex = 5;
+            buttonJatetxea.Text = "Jatetxea";
+            buttonJatetxea.UseVisualStyleBackColor = true;
+            buttonJatetxea.Click += button5_Click;
             // 
-            // button4
+            // buttonZaborra
             // 
-            button4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(638, 93);
-            button4.Name = "button4";
-            button4.Size = new Size(197, 90);
-            button4.TabIndex = 4;
-            button4.Text = "Zaborra";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            buttonZaborra.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonZaborra.Location = new Point(638, 93);
+            buttonZaborra.Name = "buttonZaborra";
+            buttonZaborra.Size = new Size(197, 90);
+            buttonZaborra.TabIndex = 4;
+            buttonZaborra.Text = "Zaborra";
+            buttonZaborra.UseVisualStyleBackColor = true;
+            buttonZaborra.Click += button4_Click;
             // 
-            // button3
+            // buttonIzarak
             // 
-            button3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(359, 93);
-            button3.Name = "button3";
-            button3.Size = new Size(186, 90);
-            button3.TabIndex = 3;
-            button3.Text = "Izarak";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            buttonIzarak.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonIzarak.Location = new Point(359, 93);
+            buttonIzarak.Name = "buttonIzarak";
+            buttonIzarak.Size = new Size(186, 90);
+            buttonIzarak.TabIndex = 3;
+            buttonIzarak.Text = "Izarak";
+            buttonIzarak.UseVisualStyleBackColor = true;
+            buttonIzarak.Click += button3_Click;
             // 
-            // button2
+            // buttonEskuoihalak
             // 
-            button2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(118, 93);
-            button2.Name = "button2";
-            button2.Size = new Size(168, 90);
-            button2.TabIndex = 2;
-            button2.Text = "Eskuoihalak";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonEskuoihalak.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonEskuoihalak.Location = new Point(118, 93);
+            buttonEskuoihalak.Name = "buttonEskuoihalak";
+            buttonEskuoihalak.Size = new Size(168, 90);
+            buttonEskuoihalak.TabIndex = 2;
+            buttonEskuoihalak.Text = "Eskuoihalak";
+            buttonEskuoihalak.UseVisualStyleBackColor = true;
+            buttonEskuoihalak.Click += button2_Click;
             // 
-            // button1
+            // buttonMezua
             // 
-            button1.BackColor = SystemColors.MenuHighlight;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(1352, 17);
-            button1.Name = "button1";
-            button1.Size = new Size(119, 61);
-            button1.TabIndex = 1;
-            button1.Text = "Gehitu +";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            buttonMezua.BackColor = SystemColors.MenuHighlight;
+            buttonMezua.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonMezua.Location = new Point(1352, 17);
+            buttonMezua.Name = "buttonMezua";
+            buttonMezua.Size = new Size(119, 61);
+            buttonMezua.TabIndex = 1;
+            buttonMezua.Text = "Gehitu +";
+            buttonMezua.UseVisualStyleBackColor = false;
+            buttonMezua.Click += button1_Click;
             // 
             // textBox1
             // 
@@ -160,14 +161,14 @@
             textBox1.Size = new Size(1332, 61);
             textBox1.TabIndex = 0;
             // 
-            // Form2
+            // FormBezeroa
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1481, 685);
             Controls.Add(panel1);
             Controls.Add(labelIzena);
-            Name = "Form2";
+            Name = "FormBezeroa";
             Text = "Form2";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -180,13 +181,13 @@
         private Label labelIzena;
         private Panel panel1;
         private TextBox textBox1;
-        private Button button2;
-        private Button button1;
+        private Button buttonEskuoihalak;
+        private Button buttonMezua;
         private FlowLayoutPanel flowLayoutPanel2;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
+        private Button buttonCheck;
+        private Button buttonJatetxea;
+        private Button buttonZaborra;
+        private Button buttonIzarak;
     }
 }

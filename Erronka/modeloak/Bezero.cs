@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Erronka
+namespace Erronka.modeloak
 {
     public class Bezeroa
     {
@@ -17,19 +17,21 @@ namespace Erronka
         public List<Mezua> Mezuak { get; set; }
         public List<Atasa> Atasak { get; set; }
 
-        // Constructor vacío para leer el JSON
         public Bezeroa()
         {
             Mezuak = new List<Mezua>();
             Atasak = new List<Atasa>();
         }
 
-        // Constructor que ya utilizabas
-        public Bezeroa(int id, string izena, int mota)
+        public Bezeroa(int id, string izena, int mota, string abizena, string emaila, string telefonoa, string sortzeEguna)
         {
             Id = id;
             Izena = izena;
             OstatuMota = mota;
+            Abizena = abizena;
+            Emaila = emaila;
+            Telefonoa = telefonoa;
+            SortzeEguna = sortzeEguna;
 
             Mezuak = new List<Mezua>();
             Atasak = new List<Atasa>();

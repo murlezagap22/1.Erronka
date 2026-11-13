@@ -1,16 +1,17 @@
 id,izena,abizena,emaila,telefonoa,ostatuMota,sortzeEguna
-1,Maitane,Perez Andueza,maitane.perez@email.com,600000001,denda,2026-01-10
-2,Jon,Martínez Urrutia,jon.martinez@email.com,600000002,autoka,2026-01-15
-3,Intza,Satrustegi Arrese,intza.satrustegi@email.com,600000003,bungalow,2026-02-01
-4,Joseba,Gómez Barrena,joseba.gomez@email.com,600000004,denda,2026-02-12
-5,Nora,Zubia Lizarraga,nora.zubia@email.com,600000005,autoka,2026-03-05
-6,David,Mendia Bilbao,david.mendia@email.com,600000006,bungalow,2026-03-18
-7,Uxue,Goikoetxea Lili,uxue.goikoetxea@email.com,600000007,denda,2026-04-02
-8,Angela,Aldatz Iturriondobeitia,angela.aldatz@email.com,600000008,autoka,2026-04-14
-9,Iker,Urkia Otxandiano,iker.urkia@email.com,600000009,bungalow,2026-05-01
-10,Leire,Eraso Urrutia,leire.eraso@email.com,600000010,denda,2026-05-20
-11,Rubén,Sánchez Satrustegi,ruben.sanchez@email.com,600000011,autoka,2026-06-03
-12,María,Fernández Merino,maria.fernandez@email.com,600000012,bungalow,2026-06-11
-13,Javier,López Astondoa,javier.lopez@email.com,600000013,denda,2026-07-01
-14,Icíar,Martín Lizarraga,iciar.martin@email.com,600000014,autoka,2026-07-19
-15,Jonathan,Gutiérrez Bilbao,jonathan.gutierrez@email.com,600000015,bungalow,2026-08-05
+"1","Maitane","Perez Andueza","maitane.perez@email.com","600000001","denda","2026-01-10"
+"2","Jon","Martínez Urrutia","jon.martinez@email.com","600000002","autoka","2026-01-15"
+"3","Intza","Satrustegi Arrese","intza.satrustegi@email.com","600000003","bungalow","2026-02-01"
+"4","Joseba","Gómez Barrena","joseba.gomez@email.com","600000004","denda","2026-02-12"
+"5","Nora","Zubia Lizarraga","nora.zubia@email.com","600000005","autoka","2026-03-05"
+"6","David","Mendia Bilbao","david.mendia@email.com","600000006","bungalow","2026-03-18"
+"7","Uxue","Goikoetxea Lili","uxue.goikoetxea@email.com","600000007","denda","2026-04-02"
+"8","Angela","Aldatz Iturriondobeitia","angela.aldatz@email.com","600000008","autoka","2026-04-14"
+"9","Iker","Urkia Otxandiano","iker.urkia@email.com","600000009","bungalow","2026-05-01"
+"10","Leire","Eraso Urrutia","leire.eraso@email.com","600000010","denda","2026-05-20"
+"11","Rubén","Sánchez Satrustegi","ruben.sanchez@email.com","600000011","autoka","2026-06-03"
+"12","María","Fernández Merino","maria.fernandez@email.com","600000012","bungalow","2026-06-11"
+"13","Javier","López Astondoa","javier.lopez@email.com","600000013","denda","2026-07-01"
+"14","Icíar","Martín Lizarraga","iciar.martin@email.com","600000014","autoka","2026-07-19"
+"15","Jonathan","Gutiérrez Bilbao","jonathan.gutierrez@email.com","600000015","bungalow","2026-08-05"
+"16","QWQWQW","","proba@gmail.com","000000000","denda","26-10-2026"
