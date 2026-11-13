@@ -45,6 +45,9 @@
             flowLayoutPanelWorkers = new FlowLayoutPanel();
             comboBoxBezeroak = new ComboBox();
             label1 = new Label();
+            label2 = new Label();
+            buttonCSV = new Button();
+            buttonXML = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -203,11 +206,47 @@
             label1.TabIndex = 11;
             label1.Text = "Bezeroa Hautatu";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(1420, 806);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 17);
+            label2.TabIndex = 12;
+            label2.Text = "Exportatu:";
+            label2.Click += label2_Click;
+            // 
+            // buttonCSV
+            // 
+            buttonCSV.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCSV.Location = new Point(1366, 826);
+            buttonCSV.Name = "buttonCSV";
+            buttonCSV.Size = new Size(76, 38);
+            buttonCSV.TabIndex = 13;
+            buttonCSV.Text = ".CSV";
+            buttonCSV.UseVisualStyleBackColor = true;
+            buttonCSV.Click += buttonCSV_Click;
+            // 
+            // buttonXML
+            // 
+            buttonXML.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonXML.Location = new Point(1465, 827);
+            buttonXML.Name = "buttonXML";
+            buttonXML.Size = new Size(76, 37);
+            buttonXML.TabIndex = 14;
+            buttonXML.Text = ".XML";
+            buttonXML.UseVisualStyleBackColor = true;
+            buttonXML.Click += buttonXML_Click;
+            // 
             // FormPrintzipala
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1553, 875);
+            Controls.Add(buttonXML);
+            Controls.Add(buttonCSV);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(comboBoxBezeroak);
             Controls.Add(panel4);
@@ -247,5 +286,8 @@
         private Button btnHasiLanaldia;
         private ComboBox comboBoxBezeroak;
         private Label label1;
+        private Label label2;
+        private Button buttonCSV;
+        private Button buttonXML;
     }
 }
