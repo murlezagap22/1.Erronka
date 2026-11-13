@@ -151,6 +151,7 @@
             gameButton.TabIndex = 8;
             gameButton.Text = "Bideojokoa";
             gameButton.UseVisualStyleBackColor = false;
+            gameButton.Click += gameButton_Click;
             // 
             // panel4
             // 
@@ -202,7 +203,7 @@
             label1.TabIndex = 11;
             label1.Text = "Bezeroa Hautatu";
             // 
-            // Form1
+            // FormPrintzipala
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -217,7 +218,7 @@
             Controls.Add(panel1);
             Controls.Add(AddClient);
             Controls.Add(flowLayoutPanelBotoiak);
-            Name = "Form1";
+            Name = "FormPrintzipala";
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -748,5 +748,20 @@ namespace Erronka
             chargueBezeroak();
         }
 
+        private void gameButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string userPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string exePath = System.IO.Path.Combine(userPath, "prueba.exe");
+
+                Process p = Process.Start(exePath);
+                label1.Text = "PID: " + p.Id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Errorea gertatu da bideojokoa irekitzekoan: " + ex.Message);
+            }
+        }
     }
 }
