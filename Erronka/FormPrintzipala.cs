@@ -726,7 +726,7 @@ namespace Erronka
             try
             {
                 string userPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string exePath = System.IO.Path.Combine(userPath, "prueba.exe");
+                string exePath = System.IO.Path.Combine(userPath, "BuildWindows/Erronka.exe");
 
                 Process p = Process.Start(exePath);
                 label1.Text = "PID: " + p.Id;
